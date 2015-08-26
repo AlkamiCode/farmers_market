@@ -1,0 +1,22 @@
+<div class="col-sm-4 col-lg-4 col-md-4">
+  <a href="<%= farmer_path(farmer) %>">
+    <div class="farmer-card thumbnail">
+      <%= image_tag farmer.image_url, class: "img-responsive",
+                    alt: "#{farmer.name} image" %>
+      <div class="caption">
+        <h4><%= farmer.name %></h4>
+        <p><%= farmer.description %></p>
+        <%= link_to "Profile", farmer_path(farmer) %>
+        <div class="clearfix btm-right">
+          <% if farmer.inactive? %>
+          <%= button_to "Retired", {}, class: "btn btn-primary btn-lg",
+              disabled: "disabled" %>
+          <% else %>
+          <%= button_to "Products", cart_items_path(farmer_id: farmer.id),
+              class: "btn btn-primary btn-sm pull-right" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
