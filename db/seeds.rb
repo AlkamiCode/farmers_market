@@ -1,19 +1,52 @@
 # Categories
-plants = Category.create(
-  name: "Plants",
-  description: "The largest selection of carnivorous plants in the world!"
+baked = Category.create(
+  name: "Baked Goods",
+  description: "Baked goods just like your mom used to make!"
 )
 
-food = Category.create(
-  name: "Food",
-  description: "Your carnivorous plants, big or small, are guaranteed to" \
-    " love our wide variety of meaty treats."
+canned = Category.create(
+  name: "Canned Goods",
+  description: "All of your fresh food stored for later!"
 )
 
-accessories = Category.create(
-  name: "Accessories",
-  description: "From gardening tools to the latest in carnivorous botany" \
-    " fashion, we have you covered."
+crafts = Category.create(
+  name: "Crafts",
+  description: "Want a new DIY project? We've got you covered!"
+)
+
+flowers = Category.create(
+  name: "Flowers",
+  description: "Wife mad at you? We've got you covered!"
+)
+
+fruit = Category.create(
+  name: "Fruit",
+  description: "Fruit fresh from the orchard!"
+)
+
+grains = Category.create(
+  name: "Grains",
+  description: "Perfect for making your home made bread."
+)
+
+herbs = Category.create(
+  name: "Herbs",
+  description: "No, not that kind of herb."
+)
+
+seeds = Category.create(
+  name: "Seeds",
+  description: "Perfect for that garden you've been wanting to grow!"
+)
+
+vegetables = Category.create(
+  name: "Vegetables",
+  description: "Fall is right around the corner, get some freshly harvested vegetables for your supper!"
+)
+
+drinks = Category.create(
+  name: "Drinks",
+  description: "Delicious and refreshing."
 )
 
 # Products
