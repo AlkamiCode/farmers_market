@@ -6,7 +6,7 @@ feature "a visitor" do
     build_products
   end
 
-  context "visits /categories/food" do
+  xcontext "visits /categories/food" do
     scenario "and sees all food products" do
       visit root_path
       within("#food-panel") do
@@ -31,7 +31,7 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/plants" do
+  xcontext "visits /categories/plants" do
     scenario "and sees all plants products" do
       visit root_path
       within("#plants-panel") do
@@ -55,7 +55,7 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/accessories" do
+  xcontext "visits /categories/accessories" do
     scenario "and sees all accessories" do
       visit root_path
       within("#accessories-panel") do
