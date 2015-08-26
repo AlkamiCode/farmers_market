@@ -122,4 +122,8 @@ RSpec.describe User, type: :model do
     user.email = "jane@doe.com"
     expect(user).to be_valid
   end
+
+  it 'has many roles' do
+    expect(user.roles).to eq([])
+  end
 end
