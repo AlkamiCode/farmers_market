@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   validates :password, length: { minimum: 8 }
 
-  enum role: %w(default admin)
+  enum role: %w(default admin farmer)
 
   def full_name
     "#{first_name} #{last_name}"
