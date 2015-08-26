@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :addresses
   has_one :store
+  has_many :user_roles
+  has_many :roles, through: :user_roles
 
   before_validation :strip_whitespace
   validates :first_name, :last_name, :email, presence: true
