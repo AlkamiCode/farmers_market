@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-lg-12">
           <h1 class="page-header">
-            Welcome to <br><span class="blood-xl">Redrum Nursery</span>
+            Welcome to <br> Farmers' Market
           </h1>
         </div>
       </div>
@@ -21,43 +21,32 @@
         <h4>Receive free coupons, free shipping, and a T-Shirt!</h4>
       </div>
       <div class="col-md-4">
-        <%= link_to "Become a Redrum MVP", account_new_path,
+        <%= link_to "Become a Local Farmer MVP", account_new_path,
             class: "btn btn-lg btn-success btn-block"%>
       </div>
     </div>
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-6">
       <div id="food-panel" class="panel panel-primary">
         <div class="panel-heading">
-          <h4><i class="fa fa-fw fa-check"></i>Food</h4>
+          <h4><i class="fa fa-fw fa-check"></i>Farmers</h4>
         </div>
-        <div class="panel-body" id="index-foods">
-          <%= link_to "Shop Now", "/categories/food",
-                      class: "btn btn-default" %>
+        <div class="panel-body" id="index-farmer">
+          <%= link_to "View All", "/categories/food",
+                      class: "btn btn-danger" %>
         </div>
       </div>
     </div>
     <div class="col-md-6">
       <div id="plants-panel" class="panel panel-primary">
         <div class="panel-heading">
-          <h4><i class="fa fa-fw fa-gift"></i>Plants</h4>
+          <h4><i class="fa fa-fw fa-gift"></i>Food</h4>
         </div>
-        <div class="panel-body" id="index-plants">
+        <div class="panel-body" id="index-food">
           <%= link_to "Shop Now", "/categories/plants",
-                      class: "btn btn-default" %>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div id="accessories-panel" class="panel panel-primary">
-        <div class="panel-heading">
-          <h4><i class="fa fa-fw fa-compass"></i>Accessories</h4>
-        </div>
-        <div class="panel-body" id="index-accessories">
-          <%= link_to "Shop Now", "/categories/accessories",
-                      class: "btn btn-default" %>
+                      class: "btn btn-danger" %>
         </div>
       </div>
     </div>
@@ -65,6 +54,10 @@
   <!-- Featured Products Section -->
   <div class="row">
     <%= render "partials/product_carousel" %>
+  </div>
+  <!-- Farmer of the Week Section -->
+  <div class="row">
+    <%= render "partials/farmer_of_the_week" %>
   </div>
   <hr>
 </div><!-- /.container -->
