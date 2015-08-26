@@ -1,0 +1,72 @@
+en:
+  faker:
+    products:
+      food: ["Bread", "Cake", "Donuts", "Pie", "Scones"]
+      description: ["Load up on those carbs!", "Fresh out of the oven!"]
+      image: ["baked_goods/3-loafs.jpg", "baked_goods/bread.jpg", "baked_goods/cake.jpg",
+              "baked_goods/colored-bread.jpg", "baked_goods/donuts.jpg", "baked_goods/in-oven.jpg",
+              "baked_goods/multigrain-bread.jpg", "baked_goods/pie-crust.jpg",
+              "baked_goods/pie.jpg", "baked_goods/scones.jpg"]
+
+      canned_food: ["Pickles", "Jars", "Jelly", "Cans", "Salsa", "Tomatoes", "Raspberries", "Greens"]
+      canned_description: ["Perfect for supper all year round!", "Fresh food stored for you!"]
+      canned_image: ["canned_goods/3-pickles.jpg", "canned_goods/box-jars.jpg", "canned_goods/canning.jpg",
+              "canned_goods/greens.jpg", "canned_goods/jelly.jpg", "canned_goods/mason-canning-jars.jpg",
+              "canned_goods/pickles.jpg", "canned_goods/rasberries.jpg", "canned_goods/salsa_2.jpg",
+              "canned_goods/salsa.jpg", "canned_goods/tomatoes.jpg"]
+
+      crafts_supplies: ["Toys", "Baskets", "Birdhouse", "Bowl"]
+      crafts_description: ["Perfect for your new hobby!", "Looking for a new DIY project?"]
+      crafts_image: ["crafts/3-dolls.jpg", "crafts/baskets.jpg", "crafts/birdhouses.jpg",
+              "crafts/bus.jpg", "crafts/cars.jpg", "crafts/dolls.jpg", "crafts/toy-car.jpg",
+              "crafts/fairy-houses.jpg", "crafts/white-house.jpg", "crafts/wooden.jpg",
+              "crafts/wood-bowl.jpg"]
+
+      drinks_drink: ["Wine", "Lemonade", "Tea", "Koolaid", "Milk"]
+      drinks_description: ["Perfect for those hot summer days!", "Crisp and refreshing!"]
+      drinks_image: ["drinks/3-jars-tea.jpg", "drinks/4-drinks.jpg", "drinks/5-wine.jpg",
+              "drinks/dairy_farm_family.jpg", "drinks/drinks.jpg", "drinks/homemade-wine.jpg",
+              "drinks/juice-44.jpg", "drinks/lemonade.jpg", "drinks/manhattan-beach.jpg",
+              "drinks/milk-4.jpg", "drinks/pure-juice.jpg", "drinks/soda.jpg", "drinks/sun-tea.jpg",
+              "drinks/strawberry-lemonade.jpg", "drinks/sun-tea-2.jpg", "drinks/suntea_after.jpg",
+              "drinks/watermelon-fizz.jpg"]
+
+      flowers_flower: ["Rose", "Morning Glory", "Pansy", "Daisy", "Lilly"]
+      flowers_description: ["A beautiful flower picked just for you."]
+      flowers_image: ["flowers/bouquet.jpg", "flowers/dahlias-marigolds", "flowers/flowers-on-table.jpg",
+              "flowers/fresh-cut-flowers.jpg", "flowers/gerbers.jpg", "flowers/grower-w-flower.jpg",
+              "flowers/market-flowers", "flowers/orange-flowers.jpg", "flowers/purple-flower.jpg",
+              "flowers/vase.jpg"]
+
+      fruits_fruit: ["Apple", "Orange", "Banana", "Peach"]
+      fruits_description: ["Plucked fresh from the orchard!"]
+      fruits_image: ["fruits/bananas.jpg", "fruits/blueberries.jpg", "fruits/bowl_of_cherries.jpg",
+              "fruits/bowl_of_pears.jpg", "fruits/golden_delicious_apple.jpg", "fruits/rasberries.jpg",
+              "fruits/golden_delicious_apples_on_tree.jpg", "fruits/grapes_on_vines.jpg",
+              "fruits/lemons_on_tree.jpg", "fruits/mango_and_avacado.jpg", "fruits/mixed-berries.jpg",
+               "fruits/orange_tree.jpg",  "fruits/strawberries.jpg"]
+
+      herbs_herb: ["Sage", "Mint", "Basil", "Cilantro"]
+      herbs_description: ["Perfect for complimenting your home cooking!", "Need that extra spice in your life?"]
+      herbs_image: ["herbs/cut-herbs.jpg", "herbs/dried-herbs.jpg", "herbs/dry-herbs.jpg", "herbs/fresh-herbs.jpg",
+              "herbs/garlic.jpg", "herbs/herbs_full.jpg", "herbs/herbs_on_block.jpg", "herbs/herbs-scissors.jpg",
+              "herbs/herbs.jpg", "herbs/market-herbs.jpg", "herbs/potted-herbs.jpg"]
+
+      seeds_seed: ["Sunflower Seeds", "Pumpkin Seeds", "Green Bean Seeds", "Wildflower Seeds"]
+      seeds_description: ["Tired of shopping here? Go plant your own stuff!"]
+      seeds_image: ["seeds/brown-seeds.jpg", "seeds/colored-seeds.jpg", "seeds/flax-seeds.jpg",
+              "seeds/more-seeds.jpg", "seeds/pumpkin-seeds.jpg", "seeds/quinoa.jpg", "seeds/seeds.jpg",
+              "seeds/seed-pile.jpg", "seeds/striped-seeds.jpg", "seeds/two-seeds.jpg", "seeds/wave-seeds.jpg"]
+
+      vegetables_vegetable: ["Green Beans", "Carrots", "Peppers", "Tomatoes", "Potatoes"]
+      vegetables_description: ["Veggies so good, even your kids will want to eat them!"]
+      vegetables_image: ["vegetables/brocholli.jpg", "vegetables/carrots.jpg", "vegetables/cucumbers.jpg",
+              "vegetables/green_beans.jpg", "vegetables/onion_carrots.jpg", "vegetables/squash.jpg",
+              "vegetables/red-white-potatoes.jpg", "vegetables/salad_on_marble.jpg", "vegetables/tomatoes.jpg"]
+
+      grains_grain: ["Wheat", "Grains", "Oats", "Oatmeal", "Whole Wheat"]
+      grains_description: ["If you don't like our baked products, try the grains for baking at home!"]
+      grains_image: ["grains/bag-of-wheat-grain.jpg", "grains/colored-grains.jpg", "grains/grains.jpg",
+              "grains/multi-grain-granola.jpg", "grains/multigrain.jpg", "grains/o-grains.jpg",
+              "grains/oatmeal_strawberries.jpg", "grains/wheat.jpg", "grains/whole-grains.jpg",
+              "grains/Whole-Grain_Wheat-germ.jpg"]
