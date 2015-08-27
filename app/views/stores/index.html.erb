@@ -1,20 +1,22 @@
 <div class="container">
-<h1>Your Farm Families</h1>
+  <div class="page-header featured">
+    <h1>Your Farm Families</h1>
+  </div>
 
 <div class="row">
-  <ul>
-    <li>
+  <!-- <ul> -->
     <% @stores.each do |store| %>
+    <!-- <li> -->
     <div class="col-md-6 farmer-panel">
       <div class="panel panel-primary">
         <div class="panel-heading">
-            <h4><%= store.farm_name %></h4>
+          <h4><%= store.farm_name %></h4>
         </div>
         <div class="panel-body">
-            <%= image_tag store.photo_url, class: "farmer-image" %>
+          <%= image_tag store.photo_url, class: "farmer-image" %>
         </div>
         <div class="farmer-description">
-            <p><%= store.description %></p>
+          <p><%= store.description %></p>
         </div>
         <div class="farmer-buttons">
           <%= link_to "Products", "#", class: "btn btn-info" %>
@@ -35,6 +37,7 @@
                   <p><%= store.description %></p>
                 </div>
                 <div class="modal-footer">
+                  <span><i class="fa fa-facebook"></i></span>
                   <%= link_to "Visit Store", "#", class: "btn btn-danger" %>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
@@ -45,9 +48,7 @@
       </div>
     </div>
     <% end %>
-    </li>
-  </ul>
-    </div>
+    <!-- </li> -->
+  <!-- </ul> -->
+  </div>
 </div>
-
-

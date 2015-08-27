@@ -6,16 +6,17 @@ feature "a visitor" do
     build_products
   end
 
-  context "visits /categories/fruit" do
-    scenario "and sees all fruit" do
+  context "visits /categories/baked-goods" do
+    scenario "and clicks subnav to see all fruit" do
       visit root_path
-      click_link("Fruits")
+      click_link("Baked Goods")
 
-      expect(current_path).to eq(category_path(@fruit.slug))
+      expect(current_path).to eq(category_path(@baked_goods.slug))
 
-      within("h1") do
-        expect(page).to have_content("Fruit")
+      within(".subnav") do
+        click_link("Fruits")
       end
+      expect(current_path).to eq(category_path(@fruit.slug))
 
       within("#category-description") do
         expect(page).to have_content("Fruits are good for you!")
@@ -28,10 +29,16 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/baked_goods" do
-    scenario "and sees all baked good products" do
+  context "visits /categories/fruits" do
+    scenario "and clicks subnav to see all baked good products" do
       visit root_path
-      click_link("Baked Goods")
+      click_link("Fruits")
+
+      expect(current_path).to eq(category_path(@fruit.slug))
+
+      within(".subnav") do
+        click_link("Baked Goods")
+      end
 
       expect(current_path).to eq(category_path(@baked_goods.slug))
 
@@ -50,10 +57,15 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/canned_goods" do
-    scenario "and sees all canned_goods" do
+  context "visits /categories/crafts" do
+    scenario "and clicks on subnav to see all canned_goods" do
       visit root_path
-      click_link("Canned Goods")
+      click_link("Crafts")
+      expect(current_path).to eq(category_path(@crafts.slug))
+
+      within(".subnav") do
+        click_link("Canned Goods")
+      end
 
       expect(current_path).to eq(category_path(@canned_goods.slug))
 
@@ -72,10 +84,16 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/crafts" do
-    scenario "and sees all crafts" do
+  context "visits /categories/canned-goods" do
+    scenario "and clicks on subnav to see all crafts" do
       visit root_path
-      click_link("Crafts")
+      click_link("Canned Goods")
+
+      expect(current_path).to eq(category_path(@canned_goods.slug))
+
+      within(".subnav") do
+        click_link("Crafts")
+      end
 
       expect(current_path).to eq(category_path(@crafts.slug))
 
@@ -94,10 +112,16 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/drinks" do
-    scenario "and sees all drinks" do
+  context "visits /categories/flowers" do
+    scenario "and clicks on subnav to see all drinks" do
       visit root_path
-      click_link("Drinks")
+      click_link("Flowers")
+
+      expect(current_path).to eq(category_path(@flowers.slug))
+
+      within(".subnav") do
+        click_link("Drinks")
+      end
 
       expect(current_path).to eq(category_path(@drinks.slug))
 
@@ -116,10 +140,16 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/flowers" do
-    scenario "and sees all flowers" do
+  context "visits /categories/drinks" do
+    scenario "and clicks on subnav to see all flowers" do
       visit root_path
-      click_link("Flowers")
+      click_link("Drinks")
+
+      expect(current_path).to eq(category_path(@drinks.slug))
+
+      within(".subnav") do
+        click_link("Flowers")
+      end
 
       expect(current_path).to eq(category_path(@flowers.slug))
 
@@ -138,10 +168,16 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/grains" do
-    scenario "and sees all grains" do
+  context "visits /categories/herbs" do
+    scenario "clicks on subnav to see all grains" do
       visit root_path
-      click_link("Grains")
+      click_link("Herbs")
+
+      expect(current_path).to eq(category_path(@herbs.slug))
+
+      within(".subnav") do
+        click_link("Grains")
+      end
 
       expect(current_path).to eq(category_path(@grains.slug))
 
@@ -160,10 +196,16 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/herbs" do
-    scenario "and sees all herbs" do
+  context "visits /categories/grains" do
+    scenario "clicks on subnav to see all herbs" do
       visit root_path
-      click_link("Herbs")
+      click_link("Grains")
+
+      expect(current_path).to eq(category_path(@grains.slug))
+
+      within(".subnav") do
+        click_link("Herbs")
+      end
 
       expect(current_path).to eq(category_path(@herbs.slug))
 
@@ -182,10 +224,16 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/seeds" do
-    scenario "and sees all seeds" do
+  context "visits /categories/vegetables" do
+    scenario "clicks on subnav to see all seeds" do
       visit root_path
-      click_link("Seeds")
+      click_link("Vegetables")
+
+      expect(current_path).to eq(category_path(@vegetables.slug))
+
+      within(".subnav") do
+        click_link("Seeds")
+      end
 
       expect(current_path).to eq(category_path(@seeds.slug))
 
@@ -204,10 +252,16 @@ feature "a visitor" do
     end
   end
 
-  context "visits /categories/vegetables" do
-    scenario "and sees all vegetables" do
+  context "visits /categories/seeds" do
+    scenario "clicks on subnav to see all vegetables" do
       visit root_path
-      click_link("Vegetables")
+      click_link("Seeds")
+
+      expect(current_path).to eq(category_path(@seeds.slug))
+
+      within(".subnav") do
+        click_link("Vegetables")
+      end
 
       expect(current_path).to eq(category_path(@vegetables.slug))
 

@@ -27,7 +27,8 @@ class Permissions
     return true if controller == "sessions" && action.in?(%w(new create destroy))
     return true if controller == "static_pages" && action == 'index'
     return true if controller == "cart_items" && action.in?(%w(index create update destroy))
-
+    return true if controller == "products" && action.in?(%w(index show))
+    return true if controller == "categories" && action == "show"
   end
 
   def guest_user_permissions
@@ -35,6 +36,8 @@ class Permissions
     return true if controller == "sessions" && action.in?(%w(new create))
     return true if controller == "static_pages" && action == 'index'
     return true if controller == "cart_items" && action.in?(%w(index create update destroy))
+    return true if controller == "products" && action.in?(%w(index show))
+    return true if controller == "categories" && action == "show"
     return true if controller == 'users' && action.in?(%w(new create update))
   end
 
@@ -47,6 +50,8 @@ class Permissions
     return true if controller == "static_pages" && action == 'index'
     return true if controller == "cart_items" && action.in?(%w(index create update destroy))
     return true if controller == "admin/stores" && action == "index"
+    return true if controller == "products" && action.in?(%w(index show))
+    return true if controller == "categories" && action == "show"
   end
 
   def platform_admin_permissions #needs build out
@@ -57,7 +62,7 @@ class Permissions
     return true if controller == "users" && action == 'index'
     return true if controller == "static_pages" && action == 'index'
     return true if controller == "cart_items" && action.in?(%w(index create update destroy))
+    return true if controller == "products" && action.in?(%w(index show))
+    return true if controller == "categories" && action == "show"
   end
-
-
 end

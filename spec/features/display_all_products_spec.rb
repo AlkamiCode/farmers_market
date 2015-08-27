@@ -7,13 +7,13 @@ feature "a visitor" do
       build_products
     end
 
-    xscenario "and sees all products" do
+    scenario "and sees all products" do
       visit products_path
 
-      expect(page).to have_selector(".thumbnail", count: 9)
-      expect(page).to have_content("Accessory 3")
+      expect(page).to have_selector(".thumbnail", count: 30)
+      expect(page).to have_content("Fruit 3")
       expect(page).to have_content("49.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/accessories/soil.jpg\"]")
+      expect(page).to have_xpath("//img[@src=\"/assets/canned_goods/greens.jpg\"]")
     end
   end
 end
