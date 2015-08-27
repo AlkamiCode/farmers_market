@@ -1,4 +1,5 @@
 <div class="container">
+  <% if @farmer %>
   <h1><%=@farmer.farm_name%></h1>
   <div class="row">
     <div class="col-sm-6 col-lg-6 col-md-6">
@@ -23,4 +24,5 @@
       as: :product %>
     </div>
   </div>
+  <% end %>
 </div>
