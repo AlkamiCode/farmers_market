@@ -307,7 +307,7 @@ footer {
 
 @media(min-width:990px) {
   .product-card.thumbnail {
-    height: 410px;
+    height: 500px;
   }
 
   .feature-card.thumbnail {
@@ -317,10 +317,15 @@ footer {
 
 @media(min-width:1190px) {
   .product-card.thumbnail {
-    height: 435px;
+    height: 500px;
   }
 
   .feature-card.thumbnail {
     height: 375px;
   }
+}
+
+.farmer-about {
+  margin-right: 10%;
+  height: 500px;
 }

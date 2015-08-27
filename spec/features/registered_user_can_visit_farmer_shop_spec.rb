@@ -21,8 +21,9 @@ feature "registered user can view individual shop" do
     name: "Herbs",
     description: "No, not that kind of herb."
     )
+
     10.times do |i|
-      Product.create!(
+      Product.create(
       name: Faker::Products.herbs_herb, description: Faker::Products.herbs_description,
       image_url: Faker::Products.herbs_image, price: Faker::Commerce.price.to_d,
       category_id: herbs.id
@@ -30,9 +31,8 @@ feature "registered user can view individual shop" do
     end
 
     store_owner.store.categories << herbs
-
-    20.times do |i|
-      store_owner.store.products << Product.find(Random.new.rand(1..10))
+    Product.all.count.times do |i|
+      store_owner.store.products << Product.find(i+1)
       store_owner.store.categories << Product.last.category
     end
 
@@ -45,5 +45,6 @@ feature "registered user can view individual shop" do
     visit "/carmer-s-ranch"
 
     expect(page).to have_content("Carmer's Ranch")
+    expect(page).to have_content("Here at the Carmer Ranch, we have lots of food...and chickens.")
   end
 end
