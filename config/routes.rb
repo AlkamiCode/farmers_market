@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "static_pages#index"
 
+  get '/stores',      to: "stores#index"
+  get '/',            to: "static_pages#index"
+
+  # Commented out pending how we will use them for unregistered users
   resources :products, only: [:index, :show]
   resources :categories, param: :slug, only: [:show]
   resources :orders, only: [:index, :show]
@@ -21,11 +25,13 @@ Rails.application.routes.draw do
   delete "/logout",    to: "sessions#destroy"
 
   namespace :admin do
+    # get '/:store/products', to: "stores/products#index"
+    resources :stores, as: :store, path: "/:store"
     resources :products
     resources :orders, only: [:index, :show, :update]
 
     get "/",           to: "admins#index"
-    get "/dashboard",  to: "admins#index"
+    get "/:store/dashboard", as: "/dashboard", path: "/:store/dashboard", param: :slug, to: "admins#index"
   end
 
   get "/admin/ordered-orders",   to: "admin/orders#index_ordered"

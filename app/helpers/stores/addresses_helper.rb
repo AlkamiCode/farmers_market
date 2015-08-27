@@ -1,0 +1,2 @@
+module Stores::AddressesHelper
+end

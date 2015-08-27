@@ -4,7 +4,7 @@ require "factory_helper"
 feature "Visitor" do
   before { build_products }
 
-  context "who is not logged in with an empty cart" do
+  xcontext "who is not logged in with an empty cart" do
     scenario "adds one item to cart twice" do
       item1 = @plants.products.first
 
@@ -40,7 +40,7 @@ feature "Visitor" do
       end
     end
 
-    scenario "adds two items to the cart" do
+    xscenario "adds two items to the cart" do
       item1 = @plants.products.first
       item2 = @food.products.last
 
@@ -79,7 +79,7 @@ feature "Visitor" do
       end
     end
 
-    scenario "adds two items and updates the quantity of one" do
+    xscenario "adds two items and updates the quantity of one" do
       item1 = @plants.products.first
       item2 = @food.products.last
       visit product_path(item1)

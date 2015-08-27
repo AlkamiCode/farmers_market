@@ -20,11 +20,14 @@
             " #{current_user.last_name}", dashboard_path %>
         </li>
         <% end %>
-        <% if current_admin? %>
+        <% if current_user && current_user.store_admin? %>
         <li>
-          <%= link_to "Admin Dashboard", admin_dashboard_path %>
+          <%= link_to "Admin Dashboard", admin_dashboard_path(current_store) %>
         </li>
         <% end %>
+        <li>
+          <%= link_to "Farmers", stores_path %>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products
             <b class="caret"></b></a>
@@ -34,14 +37,35 @@
             </li>
 
             <li>
-              <a href="/categories/plants">Plants</a>
+              <a href="/categories/fruits">Fruits</a>
             </li>
             <li>
-              <a href="/categories/food">Food</a>
+              <a href="/categories/vegitables">Food</a>
             </li>
             <li>
-              <a href="/categories/accessories">Accessories</a>
+              <a href="/categories/flowers">Accessories</a>
             </li>
+
+            <li>
+              <a href="/categories/fruits">Fruits</a>
+            </li>
+            <li>
+              <a href="/categories/Vegitables">Food</a>
+            </li>
+            <li>
+              <a href="/categories/Flowers">Accessories</a>
+            </li>
+
+            <li>
+              <a href="/categories/Fruits">Fruits</a>
+            </li>
+            <li>
+              <a href="/categories/Vegitables">Food</a>
+            </li>
+            <li>
+              <a href="/categories/Flowers">Accessories</a>
+            </li>
+
           </ul>
         </li>
         <% if current_user %>
