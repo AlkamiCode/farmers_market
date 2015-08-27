@@ -207,3 +207,26 @@ def build_products
     price: 49.99,
     image_url: "vegetables/tomatoes.jpg")
 end
+
+def build_farms
+  @user_one = User.create(
+    email: "amaluna@cds.com",
+    password: "password",
+    first_name: "Ama",
+    last_name: "Luna"
+  )
+
+  @store_one = Store.create(
+    id: 1,
+    farm_name: "Amaluna Farms",
+    facebook_url: "www.facebook.com",
+    photo_url: "farmers/amish-hay.jpg",
+    twitter_url: "www.twitter.com",
+    instagram_url: "www.instagram.com",
+    description: "French Farm Fresh Food served by acrobats in tights.  How much more French can you get?",
+    url: "amaluna-farms",
+    user_id: 1
+  )
+end
+
+
