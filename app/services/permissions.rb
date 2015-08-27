@@ -38,6 +38,7 @@ class Permissions
     return true if controller == "cart_items" && action.in?(%w(index create update destroy))
     return true if controller == "products" && action.in?(%w(index show))
     return true if controller == "categories" && action == "show"
+    return true if controller == 'users' && action.in?(%w(new create update))
   end
 
   def store_admin_permissions
@@ -64,6 +65,4 @@ class Permissions
     return true if controller == "products" && action.in?(%w(index show))
     return true if controller == "categories" && action == "show"
   end
-
-
 end
