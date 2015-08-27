@@ -1,0 +1,20 @@
+<!-- subnav here -->
+<div class="navbar subnav hidden-xs" role="navigation">
+  <div class="navbar-inner">
+    <ul class="pager subnav-pager">
+      <div class="btn-group-wrap">
+        <%= link_to "Fruits", category_path(:fruit), class:"btn btn-sm btn-success"  %>
+        <%= link_to "Vegetables", category_path(:vegetables), class:"btn btn-sm btn-success"  %>
+        <%= link_to "Baked Goods", category_path("baked-goods".to_sym), class:"btn btn-sm btn-success"  %>
+        <%= link_to "Flowers", category_path(:flowers), class:"btn btn-sm btn-success"  %>
+        <%= link_to "Seeds", category_path(:seeds), class:"btn btn-sm btn-success"  %>
+        <%= link_to "Canned Goods", category_path("canned-goods".to_sym), class:"btn btn-sm btn-success"  %>
+        <%= link_to "Grains", category_path(:grains), class:"btn btn-sm btn-success"  %>
+        <%= link_to "Drinks", category_path(:drinks), class:"btn btn-sm btn-success"  %>
+        <%= link_to "Crafts", category_path(:crafts), class:"btn btn-sm btn-success"  %>
+        <%= link_to "Herbs", category_path(:herbs), class:"btn btn-sm btn-success"  %>
+      </div>
+    </ul>
+  </div>
+</div>
+<!-- //subnav -->
