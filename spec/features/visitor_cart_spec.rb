@@ -4,8 +4,8 @@ require "factory_helper"
 feature "Visitor" do
   before { build_products }
 
-  xcontext "who is not logged in with an empty cart" do
-    scenario "adds one item to cart twice" do
+  context "who is not logged in with an empty cart" do
+    xscenario "adds one item to cart twice" do
       item1 = @plants.products.first
 
       visit product_path(item1)
@@ -112,7 +112,7 @@ feature "Visitor" do
       end
     end
 
-    scenario "adds an item twice and then decreases the quantity to one" do
+    xscenario "adds an item twice and then decreases the quantity to one" do
       item = @plants.products.first
       visit product_path(item)
       within(".caption-full") do
@@ -153,7 +153,7 @@ feature "Visitor" do
       end
     end
 
-    scenario "adds an item and attempts to decrease the quantity negative or zero" do
+    xscenario "adds an item and attempts to decrease the quantity negative or zero" do
       item = @plants.products.first
       visit product_path(item)
       within(".caption-full") do
@@ -195,7 +195,7 @@ feature "Visitor" do
       end
     end
 
-    scenario "adds an item and then clicks the remove link" do
+    xscenario "adds an item and then clicks the remove link" do
       item = @plants.products.first
       visit product_path(item)
       within(".caption-full") do
