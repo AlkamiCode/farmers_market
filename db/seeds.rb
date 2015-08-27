@@ -198,7 +198,7 @@ class Seed
     store_owner.roles << Role.create(name: "store_admin")
     store_owner.store = Store.create(farm_name: "Carmer's Ranch", facebook_url: "https://www.facebook.com/turingschool",
     instagram_url: "https://instagram.com/", twitter_url: "twitter.com",
-    description: "Here at the Carmer Ranch, we have lots of food...and chickens.")
+    description: "Here at the Carmer Ranch, we have lots of food...and chickens.", photo_url: random_picture)
     20.times do |i|
       store_owner.store.products << Product.find(Random.new.rand(1..100))
       store_owner.store.categories << Product.last.category
@@ -210,7 +210,7 @@ class Seed
       user.roles << Role.find_by(name: "store_admin")
       user.store = Store.create(farm_name: "#{user.first_name}'s farm'", facebook_url: "https://www.facebook.com/turingschool",
       instagram_url: "https://instagram.com/", twitter_url: "twitter.com",
-      description: "We have good food, you should eat it.")
+      description: "We have good food, you should eat it.", photo_url: random_picture)
 
       20.times do |i|
         user.store.products << Product.find(Random.new.rand(1..100))
@@ -220,6 +220,14 @@ class Seed
   end
 
   private
+
+  def random_picture
+    ["farmers/amish-hay.jpg", "farmers/dairy_farm_family.jpg", "farmers/fall_farm_family.jpg",
+    "farmers/familyfarms_hay.jpg", "farmers/female_farmer.jpg", "farmers/hispanic_farmer.jpg",
+    "farmers/large_family.jpg", "farmers/multi-generation.jpg", "farmers/orchard.jpg",
+    "farmers/pumkin_farmer.jpg", "farmers/spreading_ladybugs.jpg", "farmers/tractor_family.jpg",
+    "farmers/young_farm_family.jpg", "farmers/young_hay_field.jpg"].sample
+  end
 
   def add_products(order)
     10.times do |i|
