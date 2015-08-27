@@ -79,10 +79,23 @@ h6 {
   height: 362px;
 }
 
+.farmer-panel {
+  max-height: 575px;
+}
+
 .farmer-image {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+}
+
+.farmer-buttons {
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.farmer-description {
+  padding-left: 10px;
 }
 
 ul {
