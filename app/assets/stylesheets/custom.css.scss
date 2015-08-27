@@ -79,6 +79,16 @@ h6 {
   height: 362px;
 }
 
+.farmer-image {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
 #index-food,
 #index-accessories,
 #index-farmer {
@@ -94,8 +104,15 @@ h6 {
   }
 }
 
-#index-farmer {
-  background-image: url(image-path("barn.jpg"));
+#index-farmer img{
+  //background-image: url();
+
+}
+
+.farmer-image img {
+  width: 80%;
+  //margin-left: auto;
+  //margin-right: auto;
 }
 
 #index-food {

@@ -1,1 +1,54 @@
-<h1>Stores Index Page</h1>
+<div class="container">
+<h1>Your Farm Families</h1>
+
+<div class="row">
+    <ul>
+    <% @stores.each do |store| %>
+    <div class="col-md-6">
+      <li>
+      <div id="food-panel" class="panel panel-primary">
+        <div class="panel-heading">
+            <h4><%= store.farm_name %></h4>
+        </div>
+        <div class="panel-body">
+            <%= image_tag store.photo_url, class: "farmer-image" %>
+        </div>
+        <div>
+            <p><%= store.description %></p>
+        </div>
+        <div>
+          <%= link_to "Products", "#", class: "btn btn-info" %>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#farm-<%= store.id %>">Profile</button>
+
+          <!-- Modal -->
+          <div id="farm-<%= store.id %>" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h1 class="modal-title"><%= store.farm_name %></h1>
+                </div>
+                <div class="modal-body">
+                  <%= image_tag store.photo_url, class: "farmer-image" %>
+                  <p><%= store.description %></p>
+                </div>
+                <div class="modal-footer">
+                  <%= link_to "Visit Store", "#", class: "btn btn-danger" %>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </li>
+    <% end %>
+    </ul>
+</div>
+</div>
+
+
