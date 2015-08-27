@@ -1,1 +1,28 @@
-<h1>Stores/Products Index</h1>
+<div class="container">
+  <% if @farmer %>
+  <h1><%=@farmer.farm_name%></h1>
+  <div class="row">
+    <div class="col-sm-6 col-lg-6 col-md-6">
+      <div class="farmer-about thumbnail">
+        <%= image_tag @farmer.photo_url, class: "img-responsive",
+        alt: "#{@farmer.farm_name} image" %>
+        <div class="caption">
+          <%= @farmer.description %>
+          <br>
+          <br>
+            <div class="clearfix btm-left icons">
+              <%= link_to "", @farmer.facebook_url, class: "fa fa-facebook fa-2x" %>
+              <%= link_to "", @farmer.instagram_url, class: "fa fa-instagram fa-2x" %>
+              <%= link_to "", @farmer.twitter_url, class: "fa fa-twitter fa-2x" %>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div id="shop-products">
+      <%=render partial: "partials/farmer_products",
+      collection: @farmer.products,
+      as: :product %>
+    </div>
+  </div>
+  <% end %>
+</div>

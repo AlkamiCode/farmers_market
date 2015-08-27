@@ -32,7 +32,7 @@ $body-bg:               #fff !default;
 $text-color:            $dk-brown !default;
 
 //** Global textual link color.
-$link-color:            $brand-primary !default;
+$link-color:            $dk-brown !default;
 //** Link hover color set via `darken()` function.
 $link-hover-color:      $link-color !default;
 //** Link hover decoration.
@@ -187,7 +187,7 @@ $input-bg:                       #fff !default;
 $input-bg-disabled:              $gray-lighter !default;
 
 //** Text color for `<input>`s
-$input-color:                    $gray !default;
+$input-color:                    $dk-brown !default;
 //** `<input>` border color
 $input-border:                   #ccc !default;
 

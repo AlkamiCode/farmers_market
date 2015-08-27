@@ -22,7 +22,7 @@ feature "a visitor can create an account" do
     fill_in "Password", with: "password"
     click_button "Create Account"
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq "/dashboard"
     within(".alert-success") do
       expect(page).to have_content("Welcome to Redrum Nursery, Jane Doe!")
     end

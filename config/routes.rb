@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "static_pages#index"
 
+  get "/login",        to: "sessions#new"
+  post "/login",       to: "sessions#create"
+  delete "/logout",    to: "sessions#destroy"
+
   get '/stores',      to: "stores#index"
   get '/',            to: "static_pages#index"
 
@@ -11,6 +15,12 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :update, :destroy]
   resources :addresses, only: [:new, :update, :create]
 
+  namespace :stores, path: "/:store" do
+    get "/:store/products", path: "/", to: "products#index"
+    resources :products, except: [:create, :update, :destroy, :index]
+    resources :categories, except: [:create, :update, :destroy]
+  end
+
   get "/dashboard",    to: "users#show"
 
   patch "/account",    to: "users#update"
@@ -19,10 +29,6 @@ Rails.application.routes.draw do
   get "/account/edit", to: "users#edit"
 
   get "/cart",         to: "cart_items#index"
-
-  get "/login",        to: "sessions#new"
-  post "/login",       to: "sessions#create"
-  delete "/logout",    to: "sessions#destroy"
 
   namespace :admin do
     get '/:store/products', to: "stores/products#index"

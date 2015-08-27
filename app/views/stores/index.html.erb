@@ -19,7 +19,7 @@
           <p><%= store.description %></p>
         </div>
         <div class="farmer-buttons">
-          <%= link_to "Products", "#", class: "btn btn-info" %>
+          <%= link_to "Products", "/#{store.url}", class: "btn btn-info" %>
           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#farm-<%= store.id %>">Profile</button>
 
           <!-- Modal -->
@@ -38,7 +38,7 @@
                 </div>
                 <div class="modal-footer">
                   <span><i class="fa fa-facebook"></i></span>
-                  <%= link_to "Visit Store", "#", class: "btn btn-danger" %>
+                  <%= link_to "Visit Store", "/#{store.url}", class: "btn btn-danger" %>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
               </div>
