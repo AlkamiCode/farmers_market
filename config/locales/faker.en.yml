@@ -40,11 +40,11 @@ en:
 
       fruits_fruit: ["Apple", "Orange", "Banana", "Peach"]
       fruits_description: ["Plucked fresh from the orchard!"]
-      fruits_image: ["fruits/bananas.jpg", "fruits/blueberries.jpg", "fruits/bowl_of_cherries.jpg",
-              "fruits/bowl_of_pears.jpg", "fruits/golden_delicious_apple.jpg", "fruits/rasberries.jpg",
-              "fruits/golden_delicious_apples_on_tree.jpg", "fruits/grapes_on_vines.jpg",
-              "fruits/lemons_on_tree.jpg", "fruits/mango_and_avacado.jpg", "fruits/mixed-berries.jpg",
-               "fruits/orange_tree.jpg",  "fruits/strawberries.jpg"]
+      fruits_image: ["fruit/bananas.jpg", "fruit/blueberries.jpg", "fruit/bowl_of_cherries.jpg",
+              "fruit/bowl_of_pears.jpg", "fruit/golden_delicious_apple.jpg", "fruit/rasberries.jpg",
+              "fruit/golden_delicious_apples_on_tree.jpg", "fruit/grapes_on_vines.jpg",
+              "fruit/lemons_on_tree.jpg", "fruit/mango_and_avacado.jpg", "fruit/mixed-berries.jpg",
+               "fruit/orange_tree.jpg",  "fruit/strawberries.jpg"]
 
       herbs_herb: ["Sage", "Mint", "Basil", "Cilantro"]
       herbs_description: ["Perfect for complimenting your home cooking!", "Need that extra spice in your life?"]
