@@ -22,19 +22,19 @@ feature "registered user can view individual shop" do
     description: "No, not that kind of herb."
     )
 
-    10.times do |i|
-      Product.create(
-      name: Faker::Products.herbs_herb, description: Faker::Products.herbs_description,
-      image_url: Faker::Products.herbs_image, price: Faker::Commerce.price.to_d,
-      category_id: herbs.id
-      )
-    end
-
-    store_owner.store.categories << herbs
-    Product.all.count.times do |i|
-      store_owner.store.products << Product.find(i+1)
-      store_owner.store.categories << Product.last.category
-    end
+    # 10.times do |i|
+    #   Product.create(
+    #   name: Faker::Products.herbs_herb, description: Faker::Products.herbs_description,
+    #   image_url: Faker::Products.herbs_image, price: Faker::Commerce.price.to_d,
+    #   category_id: herbs.id
+    #   )
+    # end
+    #
+    # store_owner.store.categories << herbs
+    # Product.all.count.times do |i|
+    #   store_owner.store.products << Product.find(i+1)
+    #   store_owner.store.categories << Product.last.category
+    # end
 
     allow_any_instance_of(ApplicationController)
       .to receive(:current_user)
