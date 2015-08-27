@@ -20,9 +20,9 @@
             " #{current_user.last_name}", dashboard_path %>
         </li>
         <% end %>
-        <% if current_admin? %>
+        <% if current_user && current_user.store_admin? %>
         <li>
-          <%= link_to "Admin Dashboard", admin_dashboard_path %>
+          <%= link_to "Admin Dashboard", admin_dashboard_path(current_store) %>
         </li>
         <% end %>
         <li>

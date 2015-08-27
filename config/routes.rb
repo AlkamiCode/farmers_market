@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
 
     get "/",           to: "admins#index"
-    get "/dashboard",  to: "admins#index"
+    get "/:store/dashboard", as: "/dashboard", path: "/:store/dashboard", param: :slug, to: "admins#index"
   end
 
   get "/admin/ordered-orders",   to: "admin/orders#index_ordered"

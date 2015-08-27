@@ -14,4 +14,8 @@ class Store < ActiveRecord::Base
     self.url = farm_name.parameterize
   end
 
+  def to_param
+    url
+  end
+
 end
