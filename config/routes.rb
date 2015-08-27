@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get '/stores',      to: "stores#index"
   get '/',            to: "static_pages#index"
-
+  get "/cart",         to: "cart_items#index"
   # Commented out pending how we will use them for unregistered users
   resources :products, only: [:index, :show]
   resources :categories, param: :slug, only: [:show]
@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   get "/account/new",  to: "users#new"
   get "/account/edit", to: "users#edit"
 
-  get "/cart",         to: "cart_items#index"
 
   namespace :admin do
     get '/:store/products', to: "stores/products#index"
