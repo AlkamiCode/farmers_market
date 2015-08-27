@@ -27,7 +27,7 @@ class Permissions
     return true if controller == "sessions" && action.in?(%w(new create destroy))
     return true if controller == "static_pages" && action == 'index'
     return true if controller == "cart_items" && action.in?(%w(index create update destroy))
-
+    return true if controller == "stores/products" && action.in?(%w(index))
   end
 
   def guest_user_permissions

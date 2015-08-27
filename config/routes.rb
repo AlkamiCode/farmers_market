@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :update, :destroy]
   resources :addresses, only: [:new, :update, :create]
 
+  namespace :stores, path: "/:store" do
+    get "/:store/products", path: "/", to: "products#index"
+    resources :products, except: [:create, :update, :destroy, :index]
+    resources :categories, except: [:create, :update, :destroy]
+  end
+
   get "/dashboard",    to: "users#show"
 
   patch "/account",    to: "users#update"

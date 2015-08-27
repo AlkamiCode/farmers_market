@@ -4,6 +4,8 @@ require 'faker'
 class Seed
   def self.start
     seed = Seed.new
+    seed.generate_stores
+    seed.generate_users
     seed.generate_baked_products
     seed.generate_canned_products
     seed.generate_craft_products
@@ -14,9 +16,8 @@ class Seed
     seed.generate_seed_products
     seed.generate_fruit_products
     seed.generate_vegetable_products
-    seed.generate_stores
-    seed.generate_users
     seed.generate_orders
+    seed.assign_left_over_products
   end
   # Products
 
@@ -28,9 +29,27 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.food, description: Faker::Products.description,
-      image_url: Faker::Products.image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.image, price: Faker::Commerce.price.to_d + 1,
       category_id: baked.id
       )
+      puts "create product number #{i}"
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
+      while added < 3
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -42,9 +61,26 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.canned_food, description: Faker::Products.canned_description,
-      image_url: Faker::Products.canned_image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.canned_image, price: Faker::Commerce.price.to_d + 1,
       category_id: canned.id
       )
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      while added < 3
+        products = Product.last(50)
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -56,9 +92,26 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.crafts_supplies, description: Faker::Products.crafts_description,
-      image_url: Faker::Products.crafts_image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.crafts_image, price: Faker::Commerce.price.to_d + 1,
       category_id: crafts.id
       )
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      while added < 3
+        products = Product.last(50)
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -70,9 +123,26 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.flowers_flower, description: Faker::Products.flowers_description,
-      image_url: Faker::Products.flowers_image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.flowers_image, price: Faker::Commerce.price.to_d + 1,
       category_id: flowers.id
       )
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      while added < 3
+        products = Product.last(50)
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -84,9 +154,26 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.fruits_fruit, description: Faker::Products.fruits_description,
-      image_url: Faker::Products.fruits_image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.fruits_image, price: Faker::Commerce.price.to_d + 1,
       category_id: fruit.id
       )
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      while added < 3
+        products = Product.last(50)
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -98,9 +185,26 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.grains_grain, description: Faker::Products.grains_description,
-      image_url: Faker::Products.grains_image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.grains_image, price: Faker::Commerce.price.to_d + 1,
       category_id: grains.id
       )
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      while added < 3
+        products = Product.last(50)
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -112,9 +216,26 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.herbs_herb, description: Faker::Products.herbs_description,
-      image_url: Faker::Products.herbs_image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.herbs_image, price: Faker::Commerce.price.to_d + 1,
       category_id: herbs.id
       )
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      while added < 3
+        products = Product.last(50)
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -126,9 +247,26 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.seeds_seed, description: Faker::Products.seeds_description,
-      image_url: Faker::Products.seeds_image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.seeds_image, price: Faker::Commerce.price.to_d + 1,
       category_id: seeds.id
       )
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      while added < 3
+        products = Product.last(50)
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -140,9 +278,26 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.vegetables_vegetable, description: Faker::Products.vegetables_description,
-      image_url: Faker::Products.vegetables_image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.vegetables_image, price: Faker::Commerce.price.to_d + 1,
       category_id: vegetables.id
       )
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      while added < 3
+        products = Product.last(50)
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -154,9 +309,26 @@ class Seed
     50.times do |i|
       Product.create!(
       name: Faker::Products.drinks_drink, description: Faker::Products.drinks_description,
-      image_url: Faker::Products.drinks_image, price: Faker::Commerce.price.to_d,
+      image_url: Faker::Products.drinks_image, price: Faker::Commerce.price.to_d + 1,
       category_id: drinks.id
       )
+    end
+    stores = []
+    10.times do |i|
+      stores <<  Store.find(Random.new.rand(1..21))
+    end
+    stores.each do |store|
+      added = 0
+      puts "added a product to #{Product.last.category}"
+      while added < 3
+        products = Product.last(50)
+        product = products[Random.new.rand(0..49)]
+        if !product.store_id
+          store.products << product
+          added += 1
+          puts "added a product to #{store.farm_name}"
+        end
+      end
     end
   end
 
@@ -193,16 +365,7 @@ class Seed
   end
 
   def generate_stores
-    store_owner = User.create(email: "andrew@turing.io", password: "password", first_name: "Andrew",
-    last_name: "Carmer")
-    store_owner.roles << Role.create(name: "store_admin")
-    store_owner.store = Store.create(farm_name: "Carmer's Ranch", facebook_url: "https://www.facebook.com/turingschool",
-    instagram_url: "https://instagram.com/", twitter_url: "twitter.com",
-    description: "Here at the Carmer Ranch, we have lots of food...and chickens.", photo_url: random_picture)
-    20.times do |i|
-      store_owner.store.products << Product.find(Random.new.rand(1..100))
-      store_owner.store.categories << Product.last.category
-    end
+    Role.create(name: "store_admin")
 
     20.times do |i|
       user = User.create(email: "farmer#{i}@turing.io", password: "password", first_name: "Farmer#{i}",
@@ -210,12 +373,20 @@ class Seed
       user.roles << Role.find_by(name: "store_admin")
       user.store = Store.create(farm_name: "#{user.first_name}'s farm'", facebook_url: "https://www.facebook.com/turingschool",
       instagram_url: "https://instagram.com/", twitter_url: "twitter.com",
-      description: "We have good food, you should eat it.", photo_url: random_picture)
+      description: "We have good food, you should eat it.")
+    end
+    store_owner = User.create(email: "andrew@turing.io", password: "password", first_name: "Andrew",
+    last_name: "Carmer")
+    store_owner.roles << Role.find_by(name: "store_admin")
+    store_owner.store = Store.create(farm_name: "Carmer's Ranch", facebook_url: "https://www.facebook.com/turingschool",
+    instagram_url: "https://instagram.com/", twitter_url: "twitter.com",
+    description: "Here at the Carmer Ranch, we have lots of food...and chickens.", photo_url: random_picture)
+  end
 
-      20.times do |i|
-        user.store.products << Product.find(Random.new.rand(1..100))
-        user.store.categories << Product.last.category
-      end
+
+  def assign_left_over_products
+    Product.all.each do |product|
+      Store.find(Random.new.rand(1..21)).products << product if !product.store_id
     end
   end
 
@@ -223,18 +394,18 @@ class Seed
 
   def random_picture
     ["farmers/amish-hay.jpg", "farmers/dairy_farm_family.jpg", "farmers/fall_farm_family.jpg",
-    "farmers/familyfarms_hay.jpg", "farmers/female_farmer.jpg", "farmers/hispanic_farmer.jpg",
-    "farmers/large_family.jpg", "farmers/multi-generation.jpg", "farmers/orchard.jpg",
-    "farmers/pumkin_farmer.jpg", "farmers/spreading_ladybugs.jpg", "farmers/tractor_family.jpg",
-    "farmers/young_farm_family.jpg", "farmers/young_hay_field.jpg"].sample
-  end
+      "farmers/familyfarms_hay.jpg", "farmers/female_farmer.jpg", "farmers/hispanic_farmer.jpg",
+      "farmers/large_family.jpg", "farmers/multi-generation.jpg", "farmers/orchard.jpg",
+      "farmers/pumkin_farmer.jpg", "farmers/spreading_ladybugs.jpg", "farmers/tractor_family.jpg",
+      "farmers/young_farm_family.jpg", "farmers/young_hay_field.jpg"].sample
+    end
 
-  def add_products(order)
-    10.times do |i|
-      product = Product.find(Random.new.rand(1..99))
-      OrderItem.create(order_id: order.id, product_id: product.id, quantity: 3)
-      puts "#{i}: Added item #{product.name} to order #{order.id}."
+    def add_products(order)
+      10.times do |i|
+        product = Product.find(Random.new.rand(1..99))
+        OrderItem.create(order_id: order.id, product_id: product.id, quantity: 3)
+        puts "#{i}: Added item #{product.name} to order #{order.id}."
+      end
     end
   end
-end
-Seed.start
+  Seed.start

@@ -1,1 +1,7 @@
-<h1>Stores/Products Index</h1>
+<h1><%=@farmer.farm_name%></h1>
+
+<div class="row">
+  <%=render partial: "partials/product_thumbnail",
+             collection: @farmer.products,
+             as: :product %>
+</div>
