@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20150826172322) do
     t.string  "twitter_url"
     t.string  "instagram_url"
     t.string  "description"
-    t.string  "url"
+    t.string  "url" 
     t.integer "user_id"
   end
 
