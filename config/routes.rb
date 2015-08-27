@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "static_pages#index"
 
+  get "/login",        to: "sessions#new"
+  post "/login",       to: "sessions#create"
+  delete "/logout",    to: "sessions#destroy"
+  
   get '/stores',      to: "stores#index"
   get '/',            to: "static_pages#index"
 
@@ -25,10 +29,6 @@ Rails.application.routes.draw do
   get "/account/edit", to: "users#edit"
 
   get "/cart",         to: "cart_items#index"
-
-  get "/login",        to: "sessions#new"
-  post "/login",       to: "sessions#create"
-  delete "/logout",    to: "sessions#destroy"
 
   namespace :admin do
     get '/:store/products', to: "stores/products#index"

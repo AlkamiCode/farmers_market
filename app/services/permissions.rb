@@ -40,6 +40,7 @@ class Permissions
     return true if controller == "products" && action.in?(%w(index show))
     return true if controller == "categories" && action == "show"
     return true if controller == 'users' && action.in?(%w(new create update))
+    return true if controller == "stores/products" && action.in?(%w(index))
   end
 
   def store_admin_permissions
@@ -53,6 +54,7 @@ class Permissions
     return true if controller == "admin/stores" && action == "index"
     return true if controller == "products" && action.in?(%w(index show))
     return true if controller == "categories" && action == "show"
+    return true if controller == "stores/products" && action.in?(%w(index))
   end
 
   def platform_admin_permissions #needs build out
@@ -65,5 +67,6 @@ class Permissions
     return true if controller == "cart_items" && action.in?(%w(index create update destroy))
     return true if controller == "products" && action.in?(%w(index show))
     return true if controller == "categories" && action == "show"
+    return true if controller == "stores/products" && action.in?(%w(index))
   end
 end

@@ -373,7 +373,7 @@ class Seed
       user.roles << Role.find_by(name: "store_admin")
       user.store = Store.create(farm_name: "#{user.first_name}'s farm'", facebook_url: "https://www.facebook.com/turingschool",
       instagram_url: "https://instagram.com/", twitter_url: "twitter.com",
-      description: "We have good food, you should eat it.")
+      description: "We have good food, you should eat it.", photo_url: random_picture)
     end
     store_owner = User.create(email: "andrew@turing.io", password: "password", first_name: "Andrew",
     last_name: "Carmer")
