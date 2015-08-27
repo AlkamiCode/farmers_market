@@ -1,283 +1,203 @@
-# Categories
-plants = Category.create(
-  name: "Plants",
-  description: "The largest selection of carnivorous plants in the world!"
-)
+require Rails.root.join 'lib/faker/products'
+require 'faker'
 
-food = Category.create(
-  name: "Food",
-  description: "Your carnivorous plants, big or small, are guaranteed to" \
-    " love our wide variety of meaty treats."
-)
+class Seed
+  def self.start
+    seed = Seed.new
+    seed.generate_baked_products
+    seed.generate_canned_products
+    seed.generate_craft_products
+    seed.generate_drink_products
+    seed.generate_flower_products
+    seed.generate_grain_products
+    seed.generate_herb_products
+    seed.generate_seed_products
+    seed.generate_fruit_products
+    seed.generate_vegetable_products
+    seed.generate_users
+    seed.generate_orders
+  end
+  # Products
 
-accessories = Category.create(
-  name: "Accessories",
-  description: "From gardening tools to the latest in carnivorous botany" \
-    " fashion, we have you covered."
-)
+  def generate_baked_products
+    baked = Category.create(
+    name: "Baked Goods",
+    description: "Baked goods just like your mom used to make!"
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.food, description: Faker::Products.description,
+      image_url: Faker::Products.image, price: Faker::Commerce.price.to_d,
+      category_id: baked.id
+      )
+    end
+  end
 
-# Products
+  def generate_canned_products
+    canned = Category.create(
+    name: "Canned Goods",
+    description: "All of your fresh food stored for later!"
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.canned_food, description: Faker::Products.canned_description,
+      image_url: Faker::Products.canned_image, price: Faker::Commerce.price.to_d,
+      category_id: canned.id
+      )
+    end
+  end
 
-## Plants
-product_1 = plants.products.create(
-  name: "Venus Fly Trap",
-  description: "The gold standard of carnivorous plants!",
-  image_url: "plants/venus-fly-traps.jpg",
-  price: 19.99
-)
-product_2 = plants.products.create(
-  name: "Bloody Creeper",
-  description: "Give this plant plenty of room to creep. One of our best" \
-    " sellers!",
-  image_url: "plants/green-bulb.jpg",
-  price: 29.99
-)
-product_3 = plants.products.create(
-  name: "Mini Creeper Combo",
-  description: "A combination of our most popular baby carnivorous creepers.",
-  image_url: "plants/3-plants.jpg",
-  price: 12.99
-)
-plants.products.create(
-  name: "Yawning Pitcher",
-  description: "This pitcher plant lazily consumes its prey. Great for the" \
-    " kids' room!",
-  image_url: "plants/bulb-plant.jpg",
-  price: 19.99
-)
-plants.products.create(
-  name: "California Darling",
-  description: "The darling of the carnivorous plant world. Straight from" \
-    "the Valley to your home or business.",
-  image_url: "plants/Darlingtonia_californica.jpg",
-  price: 39.99
-)
-plants.products.create(
-  name: "Purple People Eater",
-  description: "You won't miss the horn on this beautiful People Eater!",
-  image_url: "plants/dew-drops-carnivorous-plant.jpg",
-  price: 49.99
-)
-plants.products.create(
-  name: "Star Fly Trap",
-  description: "The lesser known cousin of the Venus Fly Trap.",
-  image_url: "plants/group-fly-traps.jpg",
-  price: 12.99
-)
-plants.products.create(
-  name: "Redrum Pitcher",
-  description: "Just say 'yes' to GMOs with our very own Frankensteined" \
-    " Pitcher Plant!",
-  image_url: "plants/Murud_N._lowii.jpg",
-  price: 69.99
-)
-plants.products.create(
-  name: "Day of the Tentacle",
-  description: "This lovely plant unfolds to catch its unsuspecting prey.",
-  image_url: "plants/plant-2.jpg",
-  price: 29.99
-)
-plants.products.create(
-  name: "Deadly Kiss Pitcher",
-  description: "Beware the red lips on this temptuous pitcher plant!",
-  image_url: "plants/plant-3.jpg",
-  price: 24.99
-)
-plants.products.create(
-  name: "Sarlaac Plant",
-  description: "You won't have to journey to the Great Pit of Carkoon" \
-    " to witness this Sarlaac up close.",
-  image_url: "plants/star-plant.jpg",
-  price: 39.99
-)
-plants.products.create(
-  name: "Bulging Varicose",
-  description: "Just as painful as the real thing. Feed this one well.",
-  image_url: "plants/plant-4.jpg",
-  price: 29.99
-)
+  def generate_craft_products
+    crafts = Category.create(
+    name: "Crafts",
+    description: "Want a new DIY project? We've got you covered!"
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.crafts_supplies, description: Faker::Products.crafts_description,
+      image_url: Faker::Products.crafts_image, price: Faker::Commerce.price.to_d,
+      category_id: crafts.id
+      )
+    end
+  end
 
-## Food
-food.products.create(
-  name: "Tropical Flies",
-  description: "When local isn't good enough for your plant!",
-  image_url: "food/tips-on-growing-carnivorous-plants1.jpg",
-  price: 29.99
- )
-food.products.create(
-  name: "Mice Triple Pack",
-  description: "Three different colors for the sophisticated plant!",
-  image_url: "food/mice.jpg",
-  price: 16.99
- )
-food.products.create(
-  name: "Mealworms",
-  description: "Live mealworms to keep your plant in shape!",
-  image_url: "food/meal-worms.jpg",
-  price: 9.99
- )
-food.products.create(
-  name: "Mealworm Cubes",
-  description: "New! Maximum nutrition without the work!",
-  image_url: "food/meal-worm-cube.jpg",
-  price: 19.99
- )
-food.products.create(
-  name: "Ladybugs",
-  description: "New! Fresh, red and delicious!",
-  image_url: "food/ladybugs.jpg",
-  price: 9.99
- )
-food.products.create(
-  name: "Green24 Profi Linie",
-  description: "The best German plant food available!",
-  image_url: "food/bottle-food.jpg",
-  price: 11.99
-)
-food.products.create(
-  name: "Metallic Beetles",
-  description: "Shiny! Blue! Alive! Test your plant's skills!",
-  image_url: "food/beetles.jpg",
-  price: 13.99
-)
-food.products.create(
-  name: "Brown Bat",
-  description: "For the healthy eater, bats provide maximum nutrition!",
-  image_url: "food/bat.jpg",
-  price: 5.99
- )
-food.products.create(
-  name: "Ants",
-  description: "The most affordable food for your carnivorous plant!",
-  image_url: "food/8-we-are-the-ants.jpg",
-  price: 1.99
-)
+  def generate_flower_products
+    flowers = Category.create(
+    name: "Flowers",
+    description: "Wife mad at you? We've got you covered!"
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.flowers_flower, description: Faker::Products.flowers_description,
+      image_url: Faker::Products.flowers_image, price: Faker::Commerce.price.to_d,
+      category_id: flowers.id
+      )
+    end
+  end
 
-# Accessories
-accessories.products.create(
-  name: "Green Knuckles",
-  description: "Let your plants do your dirty work for you.",
-  image_url: "accessories/7-living-plant-accessories.jpg",
-  price: 29.99
-)
-accessories.products.create(
-  name: "Osmoform Fertilizer",
-  description: "Despite what they tell you, it's not made from people." \
-    " Or is it?",
-  image_url: "accessories/fertilizer.jpg",
-  price: 59.99
-)
-accessories.products.create(
-  name: "Thunderdome",
-  description: "Do Mad Max proud. Two plants go in; one comes out.",
-  image_url: "accessories/geodome.jpg",
-  price: 39.99
-)
-accessories.products.create(
-  name: "Terrarium of Horrors Kit",
-  description: "Bring the zombie faerie apocolypse home in a jar with our" \
-    " terrarium kit. Makes a great gift!",
-  image_url: "accessories/kit.jpg",
-  price: 39.99
-)
-accessories.products.create(
-  name: "My Precious...",
-  description: "Watch out! Is that Smeagol behind you?",
-  image_url: "accessories/ring-pots.jpg",
-  price: 24.99
-)
-accessories.products.create(
-  name: "Dragon Glass",
-  description: "Okay, it's really just black aquarium rock, but your" \
-    " plants will love em!",
-  image_url: "accessories/rocks.jpg",
-  price: 19.99
-)
-accessories.products.create(
-  name: "Bloody Plant Soil",
-  description: "Straight from the grounds of England. Now 99% mad cow" \
-    " disease free!",
-  image_url: "accessories/soil.jpg",
-  price: 34.99
-)
-accessories.products.create(
-  name: "Pot O Death",
-  description: "Get your killer plants on with our starter kit!",
-  image_url: "accessories/terrarium-pot.jpg",
-  price: 24.99
-)
+  def generate_fruit_products
+    fruit = Category.create(
+    name: "Fruit",
+    description: "Fruit fresh from the orchard!"
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.fruits_fruit, description: Faker::Products.fruits_description,
+      image_url: Faker::Products.fruits_image, price: Faker::Commerce.price.to_d,
+      category_id: fruit.id
+      )
+    end
+  end
 
-# Users
+  def generate_grain_products
+    grains = Category.create(
+    name: "Grains",
+    description: "Perfect for making your home made bread."
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.grains_grain, description: Faker::Products.grains_description,
+      image_url: Faker::Products.grains_image, price: Faker::Commerce.price.to_d,
+      category_id: grains.id
+      )
+    end
+  end
 
-# Regular User
-user = User.create(email: "jane@gmail.com",
-                   password: "password",
-                   first_name: "Jane",
-                   last_name: "Smith")
+  def generate_herb_products
+    herbs = Category.create(
+    name: "Herbs",
+    description: "No, not that kind of herb."
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.herbs_herb, description: Faker::Products.herbs_description,
+      image_url: Faker::Products.herbs_image, price: Faker::Commerce.price.to_d,
+      category_id: herbs.id
+      )
+    end
+  end
 
-user.addresses.create(type_of: 0,
-                      address_1: "123 Awesome Street",
-                      city: "Denver",
-                      state: "Colorado",
-                      zip_code: "80202")
+  def generate_seed_products
+    seeds = Category.create(
+    name: "Seeds",
+    description: "Perfect for that garden you've been wanting to grow!"
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.seeds_seed, description: Faker::Products.seeds_description,
+      image_url: Faker::Products.seeds_image, price: Faker::Commerce.price.to_d,
+      category_id: seeds.id
+      )
+    end
+  end
 
-user.addresses.create(type_of: 1,
-                      address_1: "123 Poppin Ln",
-                      city: "Denver",
-                      state: "Colorado",
-                      zip_code: "80202")
+  def generate_vegetable_products
+    vegetables = Category.create(
+    name: "Vegetables",
+    description: "Fall is right around the corner, get some freshly harvested vegetables for your supper!"
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.vegetables_vegetable, description: Faker::Products.vegetables_description,
+      image_url: Faker::Products.vegetables_image, price: Faker::Commerce.price.to_d,
+      category_id: vegetables.id
+      )
+    end
+  end
 
-# Admin
-User.create(email: "boat@yard.com",
-            password: "password",
-            first_name: "Richard",
-            last_name: "Foo",
-            role: 1)
+  def generate_drink_products
+    drinks = Category.create(
+    name: "Drinks",
+    description: "Delicious and refreshing."
+    )
+    10.times do |i|
+      Product.create!(
+      name: Faker::Products.drinks_drink, description: Faker::Products.drinks_description,
+      image_url: Faker::Products.drinks_image, price: Faker::Commerce.price.to_d,
+      category_id: drinks.id
+      )
+    end
+  end
 
-# Orders
 
-order_1 = user.orders.create(status: "ordered")
-order_1.order_items.create(product_id: product_1.id,
-                           quantity: 3,
-                           unit_price: product_1.price)
+  def generate_users
+    registered = User.create(email: "josh@turing.io", password: "password", first_name: "Josh",
+    last_name: "Meija")
+    store = User.create(email: "andrew@turing.io", password: "password", first_name: "Andrew",
+    last_name: "Carmer")
+    platform = User.create(email: "jorge@turing.io", password: "password", first_name: "Jorge",
+    last_name: "Telez")
+    store.roles << Role.create(name: "store_admin")
+    registered.roles << Role.create(name: "registered_user")
+    platform.roles << Role.create(name: "platform_admin")
+    50.times do |i|
+      user = User.create!(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      password: "password",
+      email: Faker::Internet.email
+      )
+      puts "User #{i}: #{user.first_name} - #{user.email} created!"
+    end
+  end
 
-order_1.order_items.create(product_id: product_2.id,
-                           quantity: 2,
-                           unit_price: product_2.price)
+  def generate_orders
+    100.times do |i|
+      user  = User.find(Random.new.rand(1..50))
+      order = Order.create!(user_id: user.id, status: 1)
+      add_products(order)
+      puts "Order #{i}: Order for #{user.first_name} created!"
+    end
+  end
 
-order_1.order_items.create(product_id: product_3.id,
-                           quantity: 1,
-                           unit_price: product_3.price)
+  private
 
-order_2 = user.orders.create(status: "ordered")
-order_2.order_items.create(product_id: product_1.id,
-                           quantity: 10,
-                           unit_price: product_1.price)
-
-order_3 = user.orders.create(status: "ordered")
-order_3.order_items.create(product_id: product_3.id,
-                           quantity: 4,
-                           unit_price: product_3.price)
-
-order_4 = user.orders.create(status: "ordered")
-order_4.order_items.create(product_id: product_1.id,
-                           quantity: 3,
-                           unit_price: product_1.price)
-
-order_4.order_items.create(product_id: product_2.id,
-                           quantity: 2,
-                           unit_price: product_2.price)
-
-order_4.order_items.create(product_id: product_3.id,
-                           quantity: 1,
-                           unit_price: product_3.price)
-
-order_5 = user.orders.create(status: "ordered")
-order_5.order_items.create(product_id: product_1.id,
-                           quantity: 10,
-                           unit_price: product_1.price)
-
-order_6 = user.orders.create(status: "ordered")
-order_6.order_items.create(product_id: product_3.id,
-                           quantity: 4,
-                           unit_price: product_3.price)
+  def add_products(order)
+    10.times do |i|
+      product = Product.find(Random.new.rand(1..99))
+      OrderItem.create(order_id: order.id, product_id: product.id, quantity: 3)
+      puts "#{i}: Added item #{product.name} to order #{order.id}."
+    end
+  end
+end
+Seed.start

@@ -33,21 +33,6 @@ RSpec.describe Product, type: :model do
     expect(product).to_not be_valid
   end
 
-  it "requires a unique name" do
-    category.products.create(
-      name: "Venus Fly Trap",
-      description: "The gold standard of carnivorous plants!",
-      image_url: "venus_fly_trap.jpg",
-      price: "19.99")
-    product_2 = category.products.create(
-      name: "Venus Fly Trap",
-      description: "Some other description",
-      image_url: "another_image.jpg",
-      price: "9.99")
-
-    expect(product_2).to_not be_valid
-  end
-
   it "requires a description" do
     product.description = nil
 
