@@ -225,8 +225,6 @@ def build_farms
     instagram_url: "www.instagram.com",
     description: "French Farm Fresh Food served by acrobats in tights.  How much more French can you get?",
     url: "amaluna-farms",
-    #user_id: 1
+    user_id: @user_one.id
   )
 end
-
-

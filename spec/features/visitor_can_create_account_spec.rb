@@ -24,7 +24,7 @@ feature "a visitor can create an account" do
 
     expect(current_path).to eq "/dashboard"
     within(".alert-success") do
-      expect(page).to have_content("Welcome to Redrum Nursery, Jane Doe!")
+      expect(page).to have_content("Welcome to Farmers Market, Jane Doe!")
     end
     within(".navbar-right") do
       expect(page).to have_content("Logged in as Jane Doe")
