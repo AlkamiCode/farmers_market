@@ -4,7 +4,6 @@ class Stores::CategoriesController < ApplicationController
   end
 
   def show
-    byebug
     @category = Category.find_by(slug: params[:slug])
   end
 end
