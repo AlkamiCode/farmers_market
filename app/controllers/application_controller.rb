@@ -15,12 +15,20 @@ class ApplicationController < ActionController::Base
     @current_permission ||= Permissions.new(current_user)
   end
 
-  def current_admin?
-    current_user && current_user.admin?
+  def current_store_admin?
+    current_user && current_user.roles.exists?(name: "store_admin")
+  end
+
+  def current_platform_admin?
+    current_user && current_user.roles.exists?(name: "platform_admin")
   end
 
   def current_store
+    if current_user.store
     @current_store ||= Store.find_by(url: current_user.store.url)
+  else
+    @current_store = nil
+  end
   end
 
   def authorize!

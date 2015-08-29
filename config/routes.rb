@@ -28,15 +28,23 @@ Rails.application.routes.draw do
   get "/account/new",  to: "users#new"
   get "/account/edit", to: "users#edit"
 
+  # patch "/account",    to: "users#update"
+  post "/store/account",     to: "users#create"
+  get "/store/account/new",  to: "users#new"
+  get "/store/profile/new",  to: "stores#new"
+  post "/store/profile",     to: "stores#create"
+  # get "/account/edit", to: "users#edit"
+
 
   namespace :admin do
+    get "/",           to: "admins#show"
+    get "/:store/dashboard", as: "/dashboard", path: "/:store/dashboard", param: :slug, to: "admins#show"
+    get "/:store/addresses/new",  to: "addresses#new"
+    post "/:store/addresses",     to: "addresses#create"
     get '/:store/products', to: "stores/products#index"
     resources :stores, as: :store, path: "/:store"
     resources :products
     resources :orders, only: [:index, :show, :update]
-
-    get "/",           to: "admins#index"
-    get "/:store/dashboard", as: "/dashboard", path: "/:store/dashboard", param: :slug, to: "admins#index"
   end
 
   get "/admin/ordered-orders",   to: "admin/orders#index_ordered"
