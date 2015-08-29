@@ -209,6 +209,7 @@ def build_products
 end
 
 def build_farms
+
   @user_one = User.create(
     email: "amaluna@cds.com",
     password: "password",
