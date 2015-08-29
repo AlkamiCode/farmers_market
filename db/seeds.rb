@@ -46,6 +46,7 @@ class Seed
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
@@ -72,11 +73,12 @@ class Seed
     stores.each do |store|
       added = 0
       puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
       while added < 3
-        products = Product.last(50)
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
@@ -103,11 +105,12 @@ class Seed
     stores.each do |store|
       added = 0
       puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
       while added < 3
-        products = Product.last(50)
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
@@ -134,11 +137,12 @@ class Seed
     stores.each do |store|
       added = 0
       puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
       while added < 3
-        products = Product.last(50)
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
@@ -165,11 +169,12 @@ class Seed
     stores.each do |store|
       added = 0
       puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
       while added < 3
-        products = Product.last(50)
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
@@ -196,11 +201,12 @@ class Seed
     stores.each do |store|
       added = 0
       puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
       while added < 3
-        products = Product.last(50)
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
@@ -227,11 +233,12 @@ class Seed
     stores.each do |store|
       added = 0
       puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
       while added < 3
-        products = Product.last(50)
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
@@ -258,11 +265,12 @@ class Seed
     stores.each do |store|
       added = 0
       puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
       while added < 3
-        products = Product.last(50)
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
@@ -289,11 +297,12 @@ class Seed
     stores.each do |store|
       added = 0
       puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
       while added < 3
-        products = Product.last(50)
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
@@ -320,11 +329,12 @@ class Seed
     stores.each do |store|
       added = 0
       puts "added a product to #{Product.last.category}"
+      products = Product.last(50)
       while added < 3
-        products = Product.last(50)
         product = products[Random.new.rand(0..49)]
         if !product.store_id
           store.products << product
+          store.categories << product.category
           added += 1
           puts "added a product to #{store.farm_name}"
         end
