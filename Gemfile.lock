@@ -50,6 +50,11 @@ GEM
       execjs
       json
     awesome_print (1.6.1)
+    aws-sdk (1.65.0)
+      aws-sdk-v1 (= 1.65.0)
+    aws-sdk-v1 (1.65.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -72,6 +77,14 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    carrierwave-aws (0.7.1)
+      aws-sdk (~> 1.58)
+      carrierwave (~> 0.7)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -159,6 +172,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rmagick (2.15.4)
     rspec-core (3.3.2)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.1)
@@ -226,6 +240,8 @@ DEPENDENCIES
   bootswatch-sass
   byebug
   capybara
+  carrierwave
+  carrierwave-aws
   coffee-rails (~> 4.1.0)
   database_cleaner
   faker
@@ -237,6 +253,7 @@ DEPENDENCIES
   puma
   rails (= 4.2.3)
   rails_12factor
+  rmagick
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

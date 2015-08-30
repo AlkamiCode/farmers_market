@@ -2,7 +2,7 @@
   <h1 class="text-center">Welcome to Farmers Market</h1>
   <p class="lead text-center">Create Profile</p>
   <div class="well col-sm-6 col-sm-offset-3">
-    <%= form_for @store, url: "/store/profile" do |f| %>
+    <%= form_for @store, url: "/store/profile", html: {multipart: true} do |f| %>
     <div class="form-group">
       <%= f.label :farm_name, "Farm Name" %>
       <%= f.text_field :farm_name, class: "form-control" %>
@@ -12,8 +12,7 @@
       <%= f.text_area :description, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :photo_url, "Profile Photo" %>
-      <%= f.text_field :photo_url, class: "form-control" %>
+      <%= f.file_field :photo_url%>
     </div>
     <div class="form-group">
       <%= f.label :facebook_url, "Facebook Url" %>
@@ -27,7 +26,7 @@
       <%= f.label :instagram_url, "Instagram Url" %>
       <%= f.text_field :instagram_url, class: "form-control" %>
     </div>
-      <%= f.submit "Create Profile", class: "btn btn-success" %>
+    <%= f.submit "Create Profile", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>
