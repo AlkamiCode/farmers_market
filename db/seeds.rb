@@ -376,7 +376,7 @@ class Seed
 
   def generate_stores
     Role.create(name: "store_admin")
-
+    
     20.times do |i|
       user = User.create(email: "farmer#{i}@turing.io", password: "password", first_name: "Farmer#{i}",
       last_name: "Johnson")

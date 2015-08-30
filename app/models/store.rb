@@ -3,10 +3,9 @@ class Store < ActiveRecord::Base
   has_many :products
   has_many :category_stores
   has_many :categories, through: :category_stores
-
+  mount_uploader :photo_url, ProfilePicUploader
   validates :farm_name, presence: true, uniqueness: true
   validates :url, uniqueness: true
-
   before_validation :generate_url
 
 

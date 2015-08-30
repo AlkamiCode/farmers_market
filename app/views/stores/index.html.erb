@@ -3,7 +3,6 @@
   <div class="page-header featured">
     <h1>Your Farm Families</h1>
   </div>
-
 <div class="row">
   <!-- <ul> -->
     <% @stores.each do |store| %>
@@ -14,7 +13,7 @@
           <h4><%= store.farm_name %></h4>
         </div>
         <div class="panel-body">
-          <%= image_tag store.photo_url, class: "farmer-image" %>
+          <%= image_tag store.photo_url.url, class: "farmer-image" %>
         </div>
         <div class="farmer-description">
           <p><%= store.description %></p>
