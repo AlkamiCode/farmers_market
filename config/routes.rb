@@ -41,7 +41,9 @@ Rails.application.routes.draw do
     get "/:store/dashboard", as: "/dashboard", path: "/:store/dashboard", param: :slug, to: "admins#show"
     get "/:store/addresses/new",  to: "addresses#new"
     post "/:store/addresses",     to: "addresses#create"
-    get '/:store/products', to: "stores/products#index"
+    get "/:store/edit",           to: "store#edit"
+    patch "/:store/dashboard",    to:"store#update"
+    get '/:store/products',       to: "stores/products#index"
     resources :stores, as: :store, path: "/:store"
     resources :products
     resources :orders, only: [:index, :show, :update]
