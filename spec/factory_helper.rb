@@ -228,5 +228,4 @@ def build_farms
     url: "amaluna-farms",
     user_id: @user_one.id
   )
-
 end

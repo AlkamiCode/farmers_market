@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826172322) do
+ActiveRecord::Schema.define(version: 20150829215348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20150826172322) do
     t.string  "twitter_url"
     t.string  "instagram_url"
     t.string  "description"
-    t.string  "url" 
+    t.string  "url"
     t.integer "user_id"
   end
 
@@ -120,9 +120,8 @@ ActiveRecord::Schema.define(version: 20150826172322) do
     t.text     "password_digest"
     t.text     "first_name"
     t.text     "last_name"
-    t.integer  "role",            default: 0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_foreign_key "addresses", "users"

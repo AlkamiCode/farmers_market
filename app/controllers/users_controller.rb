@@ -7,10 +7,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
-    if @user.save
+    if @user.save && request.referrer.include?("store/account/new")
       session[:user_id] = @user.id
-      flash[:success] = "Welcome to Redrum Nursery," \
+      flash[:success] = "Welcome to Farmers Market," \
+        " #{@user.first_name} #{@user.last_name}!"
+      @user.roles << Role.find_by(name: "store_admin")
+      redirect_to store_profile_new_path
+    elsif request.referrer.include?("store/account/new")
+      redirect_to store_account_new_path
+    elsif @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome to Farmers Market," \
         " #{@user.first_name} #{@user.last_name}!"
       redirect_to dashboard_path
     else

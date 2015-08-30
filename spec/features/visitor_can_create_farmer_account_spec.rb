@@ -1,13 +1,14 @@
 require "rails_helper"
 
-feature "a visitor can create an account" do
+feature "a visitor can create a farmer account" do
   before do
     visit root_path
-    click_link "Create Account"
+    click_link "Join Today!"
   end
 
-  scenario "a visitor clicks on the create account button and" \
+  scenario "a visitor clicks on the create a farmer account button and" \
     " sees create account form" do
+    expect(current_path).to eq "/store/account/new"
     expect(page).to have_content("First Name")
     expect(page).to have_content("Last Name")
     expect(page).to have_content("Email")
@@ -15,14 +16,15 @@ feature "a visitor can create an account" do
     expect(page).to have_button("Create Account")
   end
 
-  scenario "a vistor fills out and submits a valid create account form" do
+  xscenario "a vistor fills out and submits a valid create account form" do
     fill_in "First Name", with: "Jane"
     fill_in "Last Name", with: "Doe"
     fill_in "Email", with: "jane@doe.com"
     fill_in "Password", with: "password"
     click_button "Create Account"
 
-    expect(current_path).to eq "/dashboard"
+    expect(User.all.last.email).to eq "jane@doe.com"
+
     within(".alert-success") do
       expect(page).to have_content("Welcome to Farmers Market, Jane Doe!")
     end

@@ -5,10 +5,11 @@ class Address < ActiveRecord::Base
   validates :address_1, :city, :state, :zip_code, presence: true
   validates :zip_code, numericality: true, length: 5..9
 
-  enum type_of: %w(billing shipping)
+  enum type_of: %w(billing shipping farm)
 
   scope :billing,   -> { where(type_of: 0) }
   scope :shipping,  -> { where(type_of: 1) }
+  scope :farm,     -> { where(type_of: 2) }
 
   private
 

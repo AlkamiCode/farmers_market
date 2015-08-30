@@ -2,23 +2,25 @@ require "rails_helper"
 
 feature "Admin can view Admin Dashboard" do
   scenario "Admin logs in and sees Admin Dashboard for /admin/dashboard" do
-    User.create(first_name: "Admin",
-                last_name: "Admin",
-                email: "admin@admin.com",
-                password: "password",
-                role: 1)
+    # @user = User.create(first_name: "Admin",
+    #             last_name: "Admin",
+    #             email: "admin@admin.com",
+    #             password: "password",
+    #             )
 
     build_farms
+    @user_one.roles << Role.create(name: "store_admin")
+    #
+    # @user.store = Store.create()
 
     visit login_path
 
-    fill_in "Email", with: "admin@admin.com"
+    fill_in "Email", with: "amaluna@cds.com"
     fill_in "Password", with: "password"
     click_button "Login"
 
-    visit '/admin/amaluna-farms/dashboard'
 
-    expect(current_path).to eq("/admin/amaluna-farms/dashboard")
+    expect(current_path).to eq(admin_dashboard_path(@user_one.store))
     #expect(page).to have_content("Admin Dashboard")
   end
 
