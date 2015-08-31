@@ -9,17 +9,11 @@
       <ul class="nav nav-pills" role="tablist">
         <li role="presentation">
           <a href="<%= admin_orders_path %>">All
+
             <span class="badge"><%= @orders.count %></span>
           </a>
         </li>
-        <% @orders.statuses.keys.each do |key| %>
-          <li>
-            <a href="/admin/<%= key %>-orders">
-              <%= key.capitalize %>
-              <span class="badge"><%= @orders.send(key.to_sym).count %></span>
-            </a>
-          </li>
-        <% end %>
+
       </ul>
     </div>
   </div> <!-- /row -->
@@ -36,10 +30,10 @@
         </tr>
       </thead>
       <tbody>
-        <% @orders.send(@status).each do |order| %>
+        <% @orders.each do |order| %>
           <tr>
             <td>
-              <a href="<%= admin_order_path(order) %>"> # <%= order.id %>
+              <%= link_to order.id, admin_order_path(order) %>
             </a>
             </td>
             <td class="order-status"><%= order.status.to_s.capitalize %></td>
