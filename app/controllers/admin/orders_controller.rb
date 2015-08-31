@@ -1,6 +1,6 @@
 class Admin::OrdersController < Admin::BaseController
   def index
-    @orders = current_store.get_orders
+    @orders = current_store.get_orders.paginate(page: params[:page], per_page: 15)
     @status = :all
   end
 
@@ -31,9 +31,9 @@ class Admin::OrdersController < Admin::BaseController
   def show
     @order = Order.find(params[:id])
 
-    capability = Twilio::Util::Capability.new ENV["twilio_account_sid"], ENV["twilio_auth_token"]
-    capability.allow_client_outgoing ENV["twilio_twiml_app_sid"]
-    @token = capability.generate
+    # capability = Twilio::Util::Capability.new ENV["twilio_account_sid"], ENV["twilio_auth_token"]
+    # capability.allow_client_outgoing ENV["twilio_twiml_app_sid"]
+    # @token = capability.generate
   end
 
   def update

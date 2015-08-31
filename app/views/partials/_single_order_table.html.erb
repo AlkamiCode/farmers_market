@@ -10,6 +10,9 @@
   </thead>
   <tbody>
     <% @order.order_items.each do |order_item| %>
+    <% if order_item.product.store == current_store %>
+    <%= render partial: "partials/store_order_items", :locals => { :order_item => order_item }  %>
+    <% else %>
       <tr>
         <td>
           <a href="<%= product_path(order_item.product) %>">
@@ -21,6 +24,7 @@
         <td><%= number_to_currency(order_item.unit_price) %></td>
         <td><%= number_to_currency(order_item.subtotal) %></td>
       </tr>
+      <% end %>
     <% end %>
     <tr>
       <td colspan=3></td>
