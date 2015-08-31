@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:success] = "Welcome to Farmers Market," \
         " #{@user.first_name} #{@user.last_name}!"
-      @user.roles << Role.find_by(name: "store_admin")
+      @user.roles << Role.find_or_create_by(name: "store_admin")
       redirect_to store_profile_new_path
     elsif request.referrer.include?("store/account/new")
       redirect_to store_account_new_path

@@ -1,7 +1,7 @@
 <div class="container">
-  <h1 class="text-center">Create Address</h1>
+  <h1 class="text-center">Create Farm Address</h1>
   <div class="well col-sm-6 col-sm-offset-3">
-  <%= form_for @address do |f| %>
+  <%= form_for @address, :url => { :controller => "admin/addresses", :action => "create" } do |f| %>
     <div class="form-group">
       <%= f.label :address_1 %>
       <%= f.text_field :address_1, class: "form-control" %>

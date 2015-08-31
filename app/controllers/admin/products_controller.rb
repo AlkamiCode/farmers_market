@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::BaseController
   before_action :set_product, only: [:edit, :update]
 
   def index
-    @products = Product.all
+    @products = current_store.products
   end
 
   def new

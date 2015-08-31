@@ -1,29 +1,29 @@
 class Admin::OrdersController < Admin::BaseController
   def index
-    @orders = Order.all
+    @orders = current_store.orders
     @status = :all
   end
 
   def index_ordered
-    @orders = Order.all
+    @orders = current_store.orders
     @status = :ordered
     render :index
   end
 
   def index_paid
-    @orders = Order.all
+    @orders = current_store.orders
     @status = :paid
     render :index
   end
 
   def index_cancelled
-    @orders = Order.all
+    @orders = current_store.orders
     @status = :cancelled
     render :index
   end
 
   def index_completed
-    @orders = Order.all
+    @orders = current_store.orders
     @status = :completed
     render :index
   end

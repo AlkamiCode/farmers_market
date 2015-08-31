@@ -14,7 +14,7 @@ feature "User can create User info" do
     click_button "Create Account"
 
     within(".alert-success") do
-      expect(page).to have_content("Welcome to Redrum Nursery, Jane Doe!")
+      expect(page).to have_content("Welcome to Farmers Market, Jane Doe!")
     end
 
     expect(page).to have_content("Jane Doe")
@@ -43,7 +43,7 @@ feature "User can create User info" do
       expect(find_field("address_zip_code").value).to eq("76014")
     end
 
-    click_link "Add Addres"
+    click_link "Add Address"
 
     select "Shipping", from: "address[type_of]"
     find('input[type="text"][name*="address[address_1]"]').set("2 Shipping Address Pl")

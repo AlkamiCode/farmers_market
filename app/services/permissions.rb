@@ -30,6 +30,7 @@ class Permissions
     return true if controller == "stores/products" && action.in?(%w(index))
     return true if controller == "products" && action.in?(%w(index show))
     return true if controller == "categories" && action == "show"
+    return true if controller == "addresses" && action.in?(%w(new create edit update))
   end
 
   def guest_user_permissions
@@ -56,9 +57,12 @@ class Permissions
     return true if controller == "products" && action.in?(%w(index show))
     return true if controller == "categories" && action == "show"
     return true if controller == "stores/products" && action.in?(%w(index))
-    return true if controller == "stores" && action.in?(%w(new create))
+    return true if controller == "stores" && action.in?(%w(new create update edit))
     return true if controller == "admin/addresses" && action.in?(%w(new create))
+    return true if controller == "addresses" && action.in?(%w(new create))
     return true if controller == "admin/admins" && action.in?(%w(show))
+    return true if controller == "admin/products" && action.in?(%w(index new edit update create))
+    return true if controller == "admin/orders" && action.in?(%w(index))
   end
 
   def platform_admin_permissions #needs build out
