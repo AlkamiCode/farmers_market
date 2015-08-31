@@ -4,6 +4,9 @@
    <li class="active">All Products</li>
    <li><a href="<%= admin_products_new_path %>">Add New Product</a></li>
  </ol>
+
+  <%= link_to "Add Product", admin_products_new_path, class: "btn btn-primary btn-sm" %>
+
 </div>
 <div class="container">
   <h1 class="text-center">All <%= current_store.farm_name %>'s Products</h1>
