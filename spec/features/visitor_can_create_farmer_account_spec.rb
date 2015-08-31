@@ -65,5 +65,8 @@ feature "a visitor can create a farmer account" do
     click_button "Add Address"
 
     expect(current_path).to eq root_path
+    within(".alert-success") do
+      expect(page).to have_content("Jane Farm, your address has been saved.")
+    end
   end
 end
