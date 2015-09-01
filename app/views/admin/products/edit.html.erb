@@ -8,7 +8,7 @@
 <div class="container">
   <h1 class="text-center">Edit Product</h1>
   <div class="well col-sm-6 col-sm-offset-3">
-    <%= form_for @product, :url => admin_product_path do |f| %>
+    <%= form_for @product, :url => "/admin/#{current_store.url}/products/#{@product.id}" do |f| %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control", id: "product_form_name" %>
