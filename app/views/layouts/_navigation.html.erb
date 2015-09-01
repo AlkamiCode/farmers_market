@@ -18,7 +18,7 @@
           <% if current_user %>
           <li>
             <%= link_to "Logged in as #{current_user.first_name}" \
-              " #{current_user.last_name}", dashboard_path %>
+              " #{current_user.last_name}", "/dashboard" %>
           </li>
           <% end %>
           <% if current_user && current_user.store && current_user.store_admin? %>

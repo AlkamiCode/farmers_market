@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/login",        to: "sessions#new"
   post "/login",       to: "sessions#create"
   delete "/logout",    to: "sessions#destroy"
+  get "/dashboard",    to: "users#show"
   get '/stores',      to: "stores#index"
   get '/',            to: "static_pages#index"
   get "/cart",         to: "cart_items#index"
@@ -19,8 +20,6 @@ Rails.application.routes.draw do
     resources :products, except: [:create, :update, :destroy, :index]
     resources :categories, except: [:create, :update, :destroy]
   end
-
-  get "/dashboard",    to: "users#show"
 
   patch "/account",    to: "users#update"
   post "/account",     to: "users#create"

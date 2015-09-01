@@ -31,6 +31,7 @@ class Permissions
     return true if controller == "products" && action.in?(%w(index show))
     return true if controller == "categories" && action == "show"
     return true if controller == "addresses" && action.in?(%w(new create edit update))
+    return true if controller == "users" && action.in?(%w(show edit update))
   end
 
   def guest_user_permissions

@@ -9,7 +9,11 @@ class CartItemsController < ApplicationController
     flash[:success] = "#{@product.name} added to cart"
     cart.add_item(@product)
     session[:cart] = cart.data
-    redirect_to product_path(@product)
+    if request.referrer.include?("products")
+      redirect_to product_path(@product)
+    else
+      redirect_to "/#{@product.store.url}"
+    end
   end
 
   def update
@@ -23,8 +27,8 @@ class CartItemsController < ApplicationController
 
   def destroy
     flash[:success] = "Successfully removed " \
-                      "<a href=\"#{product_path(@product)}\">" \
-                      "#{@product.name}</a> from your cart."
+    "<a href=\"#{product_path(@product)}\">" \
+    "#{@product.name}</a> from your cart."
     cart.delete_item(@product)
     session[:cart] = cart.data
     redirect_to cart_path
