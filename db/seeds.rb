@@ -5,6 +5,7 @@ class Seed
   def self.start
     seed = Seed.new
     seed.generate_stores
+    seed.generate_addresses
     seed.generate_users
     seed.generate_baked_products
     seed.generate_canned_products
@@ -376,7 +377,7 @@ class Seed
 
   def generate_stores
     Role.create(name: "store_admin")
-    
+
     20.times do |i|
       user = User.create(email: "farmer#{i}@turing.io", password: "password", first_name: "Farmer#{i}",
       last_name: "Johnson")
@@ -393,6 +394,16 @@ class Seed
     description: "Here at the Carmer Ranch, we have lots of food...and chickens.", photo_url: random_picture)
   end
 
+  def generate_addresses
+    Store.all.each do |store|
+      store.addresses << Address.create(type_of:   "farm",
+      address_1: Faker::Address.street_address,
+      address_2: Faker::Address.secondary_address,
+      city:      Faker::Address.city,
+      state:     Faker::Address.state_abbr ,
+      zip_code:  Faker::Address.zip )
+    end
+  end
 
   def assign_left_over_products
     Product.all.each do |product|
