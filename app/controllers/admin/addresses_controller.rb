@@ -6,8 +6,8 @@ class Admin::AddressesController < Admin::BaseController
   def create
     @address = Address.new(address_params)
     if @address.save
-      current_user.addresses << @address
       @address.type_of = "farm"
+      current_user.addresses << @address
       flash[:success] = "#{Store.last.farm_name}, your address has been saved."
       redirect_to admin_dashboard_path(current_store)
     else
