@@ -8,7 +8,7 @@
 <div class="container">
   <h1 class="text-center">Add a New Product</h1>
   <div class="well col-sm-6 col-sm-offset-3">
-    <%= form_for @product, :url => admin_products_path do |f| %>
+    <%= form_for @product, :url => admin_products_new_path(params[:store]), :method => "POST" do |f| %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>
