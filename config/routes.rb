@@ -48,9 +48,9 @@ Rails.application.routes.draw do
     # get "/:store/products", as: "/products/new", path: ":store/products/new", param: :slug, to: "products#create"
     get '/:store/products', as: "/products/edit", path: ":store/products/edit", param: :slug, to: "products#edit"
     get '/:store/orders', as: "/orders", path: ":store/orders", param: :slug, to: "orders#index"
+    resources :orders, only: [:index, :show, :update]
     resources :stores, as: :store, path: "/:store"
     resources :products, as: :store, path: "/:store"
-    resources :orders, only: [:index, :show, :update]
   end
 
   get "/admin/ordered-orders",   to: "admin/orders#index_ordered"
