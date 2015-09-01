@@ -43,7 +43,7 @@
 
     <div class="col-sm-6">
       <% @current_user_farm_address = current_user.addresses.select{|address| address.type_of == "farm"} %>
-      <% if @current_user_farm_address %>
+      <% if !@current_user_farm_address.empty? %>
       <p>Address 1: <%= @current_user_farm_address[0][:address_1] %></p>
       <p>Address 2: <%= @current_user_farm_address[0][:address_2] %></p>
       <p>City: <%= @current_user_farm_address[0][:city] %></p>
