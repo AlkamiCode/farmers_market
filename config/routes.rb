@@ -49,11 +49,12 @@ Rails.application.routes.draw do
     get '/:store/products', as: "/products", path: ":store/products", param: :slug, to: "products#index"
     get '/:store/products', as: "/products/new", path: ":store/products/new", param: :slug, to: "products#new"
     post "/:store/products", path: ":store/products/new", to: "products#create"
-    get '/:store/products', as: "/products/edit", path: ":store/products/edit", param: :slug, to: "products#edit"
+    get '/:store/products', as: "/products/edit", path: ":store/products/:id/edit", param: :slug, to: "products#edit"
+    patch '/:store/products', path: "/:store/products/:id", param: :slug, to: "products#update"
     get '/:store/orders', as: "/orders", path: ":store/orders", param: :slug, to: "orders#index"
     resources :orders, only: [:index, :show, :update]
-    resources :stores, as: :store, path: "/:store"
-    resources :products, as: :store, path: "/:store"
+    # resources :stores, as: :store, path: "/:store"
+    # resources :products, as: :store, path: "/:store"
   end
 
   get "/admin/ordered-orders",   to: "admin/orders#index_ordered"
