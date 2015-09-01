@@ -397,24 +397,24 @@ class Seed
 
   def generate_addresses
     Store.all.each do |store|
-      store.user.addresses << Address.create(type_of:   "farm",
+      store.user.addresses << Address.create!(type_of:   "farm",
       address_1: Faker::Address.street_address,
       address_2: Faker::Address.secondary_address,
       city:      Faker::Address.city,
       state:     Faker::Address.state_abbr ,
-      zip_code:  Faker::Address.zip )
+      zip_code:  80218 )
     end
   end
 
   def generate_user_addresses
     User.all.each do |user|
       if !user.store
-        user.addresses << Address.create(type_of:   "shipping",
+        user.addresses << Address.create!(type_of:   "shipping",
         address_1: Faker::Address.street_address,
         address_2: Faker::Address.secondary_address,
         city:      Faker::Address.city,
         state:     Faker::Address.state_abbr ,
-        zip_code:  Faker::Address.zip )
+        zip_code:  80218 )
       end
     end
   end
