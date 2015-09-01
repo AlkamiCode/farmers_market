@@ -1,34 +1,36 @@
 require "rails_helper"
+require "factory_helper"
 
 feature "Admin can edit Farm Profile" do
   before do
-    user = User.create(first_name: "Jane",
-                       last_name:  "Doe",
-                       email:      "jane@doe.com",
-                       password:   "password")
+    build_farms
 
-    user.stores.create(farm_name:     "Jane Farm",
-                       description:   "A great farm!",
-                       instagram_url: "instagram.com",
-                       facebook_url:  "facebook.com",
-                       twitter_url:   "twitter.com ")
-
-    user.addresses.create(type_of:   2,
+    @user_one.addresses.create(type_of:   2,
                           address_1: "123 Sesame St",
                           address_2: "Apt 123",
                           city:      "New York",
                           state:     "NY",
                           zip_code:  "12345")
+    @user_one.roles.create(name: "store_admin")
 
-    allow_any_instance_of(ApplicationController)
-      .to receive(:current_store_admin)
-      .and_return(current_store_admin)
-
-    visit dashboard_path
-    click_link "Edit Account"
+    visit root_path
+    visit admin_dashboard_path(@user_one.store)
   end
 
-  xscenario "views edit form and updates Login Info" do
+  scenario "Admin logs in and views edit form" do
+    click_link "Login"
+
+    fill_in "Email", with: "amaluna@cds.com"
+    fill_in "Password", with: "password"
+    click_button "Login"
+
+    click_link "Admin Dashboard"
+    expect(current_path).to eq("/admin/amaluna-farms/dashboard")
+
+    click_link "Edit Farm Profile"
+    expect(current_path).to eq("/admin/amaluna-farms/profile/edit")
+  end
+  xscenario "Admin logs in and views edit form" do
     within("#login-info") do
       expect(find_field("user_first_name").value).to eq("Jane")
       expect(find_field("user_last_name").value).to eq("Doe")

@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="text-center">Admin Dashboard</h3>
+  <h3 class="text-center"><%= current_store.farm_name %>'s Admin Dashboard</h3>
   <div class="row">
     <div class="col-sm-6 ">
       <a href="<%= admin_products_path(current_store) %>">
@@ -19,5 +19,37 @@
         </div>
       </a>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="thumbnail">
+              <%= image_tag current_store.photo_url.url, class: "farmer-image" %>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <p>Farm Name: <%= current_store.farm_name %></p>
+          <p>Description: <%= current_store.description %></p>
+          <p>Facebook Url: <%= current_store.facebook_url %></p>
+          <p>Twitter Url: <%= current_store.twitter_url %></p>
+          <p>Instagram Url: <%= current_store.instagram_url %></p>
+          <p>Store Url: <%= current_store.url %></p>
+        </div>
+
+      </div>
+      <%= link_to "Edit Farm Profile", admin_stores_edit_path(current_store), class: "btn btn-block btn-primary" %>
+      </div>
+
+    <div class="col-sm-6">
+      <% @current_user_farm_address = current_user.addresses.select{|address| address.type_of == "farm"} %>
+      <p>Address 1: <%= @current_user_farm_address[0][:address_1] %></p>
+      <p>Address 2: <%= @current_user_farm_address[0][:address_2] %></p>
+      <p>City: <%= @current_user_farm_address[0][:city] %></p>
+      <p>State: <%= @current_user_farm_address[0][:state] %></p>
+      <p>Zipcode: <%= @current_user_farm_address[0][:zip_code] %></p>
+      <%= link_to "Edit Farm Address", "/admin/#{current_store.url}/addresses", class: "btn btn-block btn-primary" %>
+    </div>
+
   </div>
 </div>

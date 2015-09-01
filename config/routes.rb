@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "/login",        to: "sessions#new"
   post "/login",       to: "sessions#create"
   delete "/logout",    to: "sessions#destroy"
-
   get '/stores',      to: "stores#index"
   get '/',            to: "static_pages#index"
   get "/cart",         to: "cart_items#index"
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
   resources :categories, param: :slug, only: [:show]
   resources :orders, only: [:index, :show]
   resources :cart_items, only: [:create, :update, :destroy]
-  resources :addresses, only: [:new, :update, :create]
+  resources :addresses, only: [:new, :edit, :update, :create]
 
   namespace :stores, path: "/:store" do
     get "/:store/products", path: "/", to: "products#index"
@@ -33,6 +32,7 @@ Rails.application.routes.draw do
   get "/store/account/new",  to: "users#new"
   get "/store/profile/new",  to: "stores#new"
   post "/store/profile",     to: "stores#create"
+  patch "/store/:id",        to: "stores#update"
   # get "/account/edit", to: "users#edit"
 
 
@@ -41,8 +41,12 @@ Rails.application.routes.draw do
     get "/:store/dashboard", as: "/dashboard", path: "/:store/dashboard", param: :slug, to: "admins#show"
     get "/:store/addresses/new",  to: "addresses#new"
     post "/:store/addresses",     to: "addresses#create"
+    get "/:store/addresses",      to: "addresses#edit"
     get "/:store/edit",           to: "store#edit"
+    patch "/:store/dashboard",    to:"addresses#update"
     patch "/:store/dashboard",    to:"store#update"
+    get '/:store/stores', as: "/stores/edit", path: ":store/profile/edit", param: :slug, to: "stores#edit"
+    patch '/:store/stores', path: ":store/profile", param: :slug, to: "stores#update"
     get '/:store/products', as: "/products", path: ":store/products", param: :slug, to: "products#index"
     get '/:store/products', as: "/products/new", path: ":store/products/new", param: :slug, to: "products#new"
     post "/:store/products", path: ":store/products/new", to: "products#create"

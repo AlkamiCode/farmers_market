@@ -4,6 +4,7 @@ require "factory_helper"
 feature "a visitor" do
   before do
     build_products
+    build_farms
   end
 
   context "visits /categories/fruit" do

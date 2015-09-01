@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 class="text-center">Welcome to Farmers Market</h1>
+  <p class="lead text-center">Edit Farm Profile</p>
+  <div class="well col-sm-6 col-sm-offset-3">
+    <%= form_for @store, method: :patch do |f| %>
+    <div class="form-group">
+      <%= f.label :farm_name, "Farm Name" %>
+      <%= f.text_field :farm_name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, "About your Farm" %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.file_field :photo_url%>
+    </div>
+    <div class="form-group">
+      <%= f.label :facebook_url, "Facebook Url" %>
+      <%= f.text_field :facebook_url, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :twitter_url, "Twitter Url" %>
+      <%= f.text_field :twitter_url, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :instagram_url, "Instagram Url" %>
+      <%= f.text_field :instagram_url, class: "form-control" %>
+    </div>
+    <%= f.submit "Update Profile", class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
