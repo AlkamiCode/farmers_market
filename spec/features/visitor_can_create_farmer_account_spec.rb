@@ -1,7 +1,10 @@
 require "rails_helper"
+require "factory_helper"
 
 feature "a visitor can create a farmer account" do
   before do
+    build_products
+    build_farms
     visit root_path
     click_link "Join Today!"
   end
