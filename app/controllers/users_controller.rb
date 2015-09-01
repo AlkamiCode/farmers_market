@@ -19,6 +19,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:success] = "Welcome to Farmers Market," \
         " #{@user.first_name} #{@user.last_name}!"
+        NotificationsMailer.new_user(user_params).deliver_now
       redirect_to dashboard_path
     else
       flash.now[:warning] = @user.errors.full_messages.join(". ")
