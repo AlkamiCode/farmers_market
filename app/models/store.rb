@@ -17,4 +17,10 @@ class Store < ActiveRecord::Base
     url
   end
 
+  def get_orders
+    self.products.map do |product|
+      product.orders
+    end.flatten
+  end
+
 end
