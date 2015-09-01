@@ -58,7 +58,9 @@ class Permissions
     return true if controller == "categories" && action == "show"
     return true if controller == "stores/products" && action.in?(%w(index))
     return true if controller == "stores" && action.in?(%w(new create update edit))
-    return true if controller == "admin/addresses" && action.in?(%w(new create))
+    return true if controller == "admin/addresses" && action.in?(%w(new create update edit))
+    return true if controller == "addresses" && action.in?(%w(update edit))
+    return true if controller == "admin/stores" && action.in?(%w(update edit))
     return true if controller == "addresses" && action.in?(%w(new create))
     return true if controller == "admin/admins" && action.in?(%w(show))
     return true if controller == "admin/products" && action.in?(%w(index new edit update create))

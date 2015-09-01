@@ -21,6 +21,7 @@ feature "a user can login" do
     fill_in "Password", with: "password"
     click_button "Login"
 
+    
     expect(current_path).to eq("/dashboard")
     within(".alert-success") do
       expect(page).to have_content("Welcome back to Farmer Market, Ama Luna!")

@@ -20,4 +20,13 @@
       </a>
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= link_to "Edit Farm Profile", admin_stores_edit_path(current_store), class: "btn btn-block btn-primary" %>
+    </div>
+    <div class="col-sm-6">
+      <%= link_to "Edit Farm Address", "/admin/#{current_store.url}/addresses", class: "btn btn-block btn-primary" %>
+    </div>
+
+  </div>
 </div>

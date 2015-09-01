@@ -4,20 +4,31 @@ class Admin::AddressesController < Admin::BaseController
   end
 
   def create
-    # the code from the User Address controller
-    # user = User.find(current_user.id)
-    # @address = user.addresses.new(address_params)
     @address = Address.new(address_params)
-    #need additional logic, it is not going to the right place.
     if @address.save
       current_user.addresses << @address
       @address.type_of = "farm"
       flash[:success] = "#{Store.last.farm_name}, your address has been saved."
-      redirect_to root_path
-
+      redirect_to admin_dashboard_path(current_store)
     else
       flash[:danger] = "Please try again!"
       render :new
+    end
+  end
+
+  def edit
+    @address = current_user.addresses.select{|address| address.type_of == "farm"}
+  end
+
+  def update
+    @address = current_user.addresses
+
+    if @address.update(address_params)
+      flash[:success] = "Your farm address has been updated."
+      redirect_to admin_dashboard_path(current_store)
+    else
+      flash[:warning] = @address.errors.full_messages.join(". ")
+      redirect_to account_edit_path
     end
   end
 

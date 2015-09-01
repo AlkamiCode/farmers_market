@@ -64,7 +64,7 @@ feature "a visitor can create a farmer account" do
     find('input[type="text"][name*="address[zip_code]"]').set("76014")
     click_button "Add Address"
 
-    expect(current_path).to eq root_path
+    expect(current_path).to eq("/admin/jane-farm/dashboard")
     within(".alert-success") do
       expect(page).to have_content("Jane Farm, your address has been saved.")
     end

@@ -16,6 +16,10 @@ class AddressesController < ApplicationController
     end
   end
 
+  def edit
+    @address = current_user.addresses.first
+  end
+
   def update
     @address = Address.find(params[:id])
 

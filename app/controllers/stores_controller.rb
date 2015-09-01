@@ -28,6 +28,17 @@ class StoresController < ApplicationController
     end
   end
 
+  def edit
+    @store = Store.find_by(url: params[:store])
+  end
+
+  def update
+    @store = current_store
+    @store.update(store_params)
+    flash[:success] = "#{@store.farm_name} has been updated."
+    redirect_to admin_dashboard_path(@store.farm_name)
+  end
+
   private
 
   def store_params
