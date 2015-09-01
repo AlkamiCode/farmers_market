@@ -2,16 +2,17 @@
   <h2 class="page-headed">Farmer of the Week</h2>
 </div>
 <div class="col-md-3">
-  <img src="http://placehold.it/350x350" alt="" class="img-responsive">
+  <%= link_to image_tag(@featured_farmer.photo_url, class: "img-responsive",
+  alt: "#{@featured_farmer.farm_name} image"), "/#{@featured_farmer.url}"  %>
 </div>
 <div class="featured-farmer col-md-6">
-  <h3>The Johnson Family Farm</h3>
+  <h3> <%= link_to "#{@featured_farmer.farm_name}", "/#{@featured_farmer.url}" %> </h3>
   <p>
-    We are proud to be a 4th generation farm family from Denver. Our corn, tomatoes and squash are from heirloom seeds originally grown over 100 years ago.
+    <%= @featured_farmer.description %>
   </p>
   <blockquote class="blockquote-reverse blockquote-small">
     <p>
-      "The Johnson's grow the sweetest and freshest corn we have ever eaten!"
+      "The <%= @featured_farmer.farm_name %> grow the sweetest and freshest corn we have ever eaten!"
     </p>
     <footer>The Smiths</footer>
   </blockquote>
