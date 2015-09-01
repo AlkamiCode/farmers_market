@@ -87,7 +87,7 @@ RSpec.describe Order, type: :model do
   end
 
   it "returns the correct #total for an order" do
-    expect(@order.total).to eq(64.97)
+    expect(@order.total).to eq(59.97)
   end
 
   it "returns cancel and completed for #available_status_transitions if status is paid" do
