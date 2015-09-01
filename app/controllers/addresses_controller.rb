@@ -16,10 +16,17 @@ class AddressesController < ApplicationController
     end
   end
 
+  def edit
+    @address = current_user.addresses.first
+  end
+
   def update
     @address = Address.find(params[:id])
 
-    if @address.update(address_params)
+    if @address.update(address_params) && current_store
+      flash[:success] = "Your farm address has been updated."
+      redirect_to admin_dashboard_path(current_store)
+    elsif @address.update(address_params)
       flash[:success] = "Your address has been updated."
       redirect_to account_edit_path
     else

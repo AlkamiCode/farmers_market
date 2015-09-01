@@ -1,12 +1,22 @@
 require "rails_helper"
+require "factory_helper"
 
 feature "admin can see all orders" do
   before do
+    build_products
+
     @admin = User.create(first_name: "Jane",
     last_name:  "Doe",
     email:      "jane@gmail.com",
     password:   "password")
 
+    @admin.addresses << Address.create(address_1: "36w231",
+                                       address_2: "Crane",
+                                       city: "St. Charles",
+                                       state: "IL",
+                                       zip_code: "60174",
+                                       type_of: "farm")
+                                       
     @admin.roles << Role.create(name: "store_admin")
 
     @admin.store = Store.create(farm_name: "Carmer's Ranch", facebook_url: "https://www.facebook.com/turingschool",
@@ -75,7 +85,6 @@ feature "admin can see all orders" do
 
   scenario "an admin can view all orders" do
     visit admin_dashboard_path(@admin.store)
-
     expect(current_path).to eq(admin_dashboard_path(@admin.store))
 
     click_link("View All Orders")
