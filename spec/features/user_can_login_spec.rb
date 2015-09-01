@@ -30,7 +30,7 @@ feature "a user can login" do
     click_button "Login"
 
 
-    expect(current_path).to eq("/dashboard")
+    expect(current_path).to eq("/")
     within(".alert-success") do
       expect(page).to have_content("Welcome back to Farmer Market, Ama Luna!")
 
