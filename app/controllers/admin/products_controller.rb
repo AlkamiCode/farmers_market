@@ -10,8 +10,9 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_store.products.new(product_params)
     if @product.save
+
       flash[:success] = "#{@product.name} has been added."
       redirect_to admin_dashboard_path
     else
@@ -36,7 +37,8 @@ class Admin::ProductsController < Admin::BaseController
                                     :price,
                                     :image_url,
                                     :category_id,
-                                    :status)
+                                    :status,
+                                    :store)
   end
 
   def set_product
