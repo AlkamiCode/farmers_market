@@ -3,8 +3,8 @@
     <h1> <%= link_to @product.store.farm_name, "/#{@product.store.url}" %></h1>
   </div>
   <div class="row">
-
     <div class="thumbnail col-md-12">
+      
       <%= image_tag @product.image_url, class: "img-responsive col-md-5",
                     alt: "#{@product.name} image" %>
       <div class="caption-full col-md-7">

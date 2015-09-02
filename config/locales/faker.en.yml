@@ -27,15 +27,15 @@ en:
       drinks_image: ["drinks/3-jars-tea.jpg", "drinks/4-drinks.jpg", "drinks/5-wine.jpg",
               "drinks/dairy_farm_family.jpg", "drinks/drinks.jpg", "drinks/homemade-wine.jpg",
               "drinks/juice-44.jpg", "drinks/lemonade.jpg", "drinks/manhattan-beach.jpg",
-              "drinks/milk-4.jpg", "drinks/pure-juice.jpg", "drinks/soda.jpg", "drinks/sun-tea.jpg",
+              "drinks/milk-4.jpg", "drinks/pure-juice.jpg", "drinks/soda.jpg",
               "drinks/strawberry-lemonade.jpg", "drinks/sun-tea-2.jpg", "drinks/suntea_after.jpg",
               "drinks/watermelon-fizz.jpg"]
 
       flowers_flower: ["Rose", "Morning Glory", "Pansy", "Daisy", "Lilly"]
       flowers_description: ["A beautiful flower picked just for you."]
-      flowers_image: ["flowers/bouquet.jpg", "flowers/dahlias-marigolds", "flowers/flowers-on-table.jpg",
+      flowers_image: ["flowers/bouquet.jpg", "flowers/dahlias-marigolds.jpg", "flowers/flowers-on-table.jpg",
               "flowers/fresh-cut-flowers.jpg", "flowers/gerbers.jpg", "flowers/grower-w-flowers.jpg",
-              "flowers/market-flowers", "flowers/orange-flowers.jpg", "flowers/purple-flower.jpg",
+              "flowers/market-flowers.jpg", "flowers/orange-flowers.jpg", "flowers/purple-flower.jpg",
               "flowers/vase.jpg"]
 
       fruits_fruit: ["Apple", "Orange", "Banana", "Peach"]
