@@ -15,7 +15,7 @@ class ProfilePicUploader < CarrierWave::Uploader::Base
   def random_picture
     ["farmers/amish-hay.jpg", "farmers/dairy_farm_family.jpg", "farmers/fall_farm_family.jpg",
       "farmers/familyfarms_hay.jpg", "farmers/female_farmer.jpg", "farmers/hispanic_farmer.jpg",
-      "farmers/large_family.jpg", "farmers/multi-generation.jpg", "farmers/orchard.jpg",
+      "farmers/large_family.jpg", "farmers/multi-generation.jpg",
       "farmers/pumkin_farmer.jpg", "farmers/spreading_ladybugs.jpg", "farmers/tractor_family.jpg",
       "farmers/young_farm_family.jpg", "farmers/young_hay_field.jpg"].sample
     end
