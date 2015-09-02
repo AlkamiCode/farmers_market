@@ -20,7 +20,7 @@ class NotificationsMailer < ApplicationMailer
   def user_order(current_user)
     mail(
     to:         current_user.email,
-    subject:  "Welcome to Farmers Market, #{current_user.store.farm_name}!"
+    subject:  "Thank you for your order, #{current_user.first_name}!"
     ) do |format|
       format.html {
           render locals: { user_first_name: current_user.first_name,
