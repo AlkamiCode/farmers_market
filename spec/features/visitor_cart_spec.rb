@@ -13,11 +13,7 @@ feature "Visitor" do
       item1 = @fruit.products.first
 
       @store_one.products << item1
-      # (
-      #   name: "Fruit 1",
-      #   description: "This is the description for fruit 1",
-      #   price: 19.99,
-      #   image_url: "fruit/bananas.jpg")
+
       visit product_path(item1)
       within(".caption-full") do
         click_button "Add to Cart"
