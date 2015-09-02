@@ -27,12 +27,12 @@ class ChargesController < ApplicationController
                          quantity: cart_item.quantity,
                          unit_price: cart_item.price)
       end
-
+      NotificationsMailer.user_order(current_user, cart.cart_items, @order)
       session[:cart] = {}
       cart.clear
 
       flash[:success] = "Your payment was successful and your order is placed."
-      # notify_boss
+
       redirect_to order_path(@order)
     end
 
