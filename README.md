@@ -1,3 +1,3 @@
 Farmers Market
 
-pivot-farmers-market.herokuapp.com
+farmers-market-pivot.herokuapp.com
