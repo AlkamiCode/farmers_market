@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authorize!
 
-  helper_method :current_user, :current_admin?, :cart, :current_store
+  helper_method :current_user, :current_store_admin?, :current_admin?, :cart, :current_store
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

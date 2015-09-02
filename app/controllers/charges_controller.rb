@@ -21,19 +21,20 @@ class ChargesController < ApplicationController
     if charge["paid"] == true
       @order = Order.create(user_id: current_user.id,
                            status: "paid")
-
-      cart.cart_items.each do |cart_item|
+      paid_cart_items = cart.cart_items
+      paid_cart_items.each do |cart_item|
         OrderItem.create(order_id: @order.id,
                          product_id: cart_item.id,
                          quantity: cart_item.quantity,
                          unit_price: cart_item.price)
       end
-
       session[:cart] = {}
       cart.clear
 
+      NotificationsMailer.user_order(current_user).deliver_now
+      NotificationsMailer.store_order(paid_cart_items).deliver_now
       flash[:success] = "Your payment was successful and your order is placed."
-      notify_boss
+
       redirect_to order_path(@order)
     end
 
@@ -44,11 +45,11 @@ class ChargesController < ApplicationController
 
   private
 
-  def notify_boss
-    client = Twilio::REST::Client.new(ENV["twilio_account_sid"],
-                                      ENV["twilio_auth_token"])
-    client.messages.create(from: "17723245092",
-                           to: "17724183162",
-                           body: "You've received a $#{(@order.total)} order!")
-  end
+  # def notify_boss
+  #   client = Twilio::REST::Client.new(ENV["twilio_account_sid"],
+  #                                     ENV["twilio_auth_token"])
+  #   client.messages.create(from: "17723245092",
+  #                          to: "17724183162",
+  #                          body: "You've received a $#{(@order.total)} order!")
+  # end
 end
