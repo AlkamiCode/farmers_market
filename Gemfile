@@ -10,6 +10,7 @@ gem "fog", "~> 1.27", require: "fog/rackspace/storage"
 gem 'carrierwave'
 gem "fog-google"
 gem 'rmagick'
+gem "figaro"
 gem 'faker'
 gem 'rails_12factor', group: :production
 gem 'will_paginate'
