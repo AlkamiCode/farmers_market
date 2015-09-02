@@ -6,8 +6,9 @@ ruby '2.2.2'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem "fog", "~> 1.27", require: "fog/rackspace/storage"
 gem 'carrierwave'
-gem 'carrierwave-aws'
+gem "fog-google"
 gem 'rmagick'
 gem 'faker'
 gem 'will_paginate'
@@ -53,6 +54,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'rack_session_access'
 
   gem 'better_errors'
   gem 'awesome_print'

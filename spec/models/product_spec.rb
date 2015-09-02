@@ -19,7 +19,6 @@ RSpec.describe Product, type: :model do
     expect(product.name).to eq("Venus Fly Trap")
     expect(product.description).to eq(
       "The gold standard of carnivorous plants!")
-    expect(product.image_url).to eq("venus_fly_trap.jpg")
     expect(product.price).to eq(19.99)
 
     expect(product.category.name).to eq("Plants")

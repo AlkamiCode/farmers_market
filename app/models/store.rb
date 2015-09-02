@@ -8,7 +8,6 @@ class Store < ActiveRecord::Base
   validates :url, uniqueness: true
   before_validation :generate_url
 
-
   def generate_url
     self.url = farm_name.parameterize
   end

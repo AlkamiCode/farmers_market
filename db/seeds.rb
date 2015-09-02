@@ -29,11 +29,13 @@ class Seed
     description: "Baked goods just like your mom used to make!"
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.food, description: Faker::Products.description,
-      image_url: Faker::Products.image, price: Faker::Commerce.price.to_d + 1,
+      price: Faker::Commerce.price.to_d + 1,
       category_id: baked.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.image}")))
+      product.save!
       puts "create product number #{i}"
     end
     stores = []
@@ -62,11 +64,13 @@ class Seed
     description: "All of your fresh food stored for later!"
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.canned_food, description: Faker::Products.canned_description,
-      image_url: Faker::Products.canned_image, price: Faker::Commerce.price.to_d + 1,
+      price: Faker::Commerce.price.to_d + 1,
       category_id: canned.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.canned_image}")))
+      product.save!
     end
     stores = []
     10.times do |i|
@@ -94,11 +98,13 @@ class Seed
     description: "Want a new DIY project? We've got you covered!"
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.crafts_supplies, description: Faker::Products.crafts_description,
-      image_url: Faker::Products.crafts_image, price: Faker::Commerce.price.to_d + 1,
+      price: Faker::Commerce.price.to_d + 1,
       category_id: crafts.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.crafts_image}")))
+      product.save!
     end
     stores = []
     10.times do |i|
@@ -126,11 +132,13 @@ class Seed
     description: "Wife mad at you? We've got you covered!"
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.flowers_flower, description: Faker::Products.flowers_description,
       image_url: Faker::Products.flowers_image, price: Faker::Commerce.price.to_d + 1,
       category_id: flowers.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.flowers_image}")))
+      product.save!
     end
     stores = []
     10.times do |i|
@@ -158,11 +166,13 @@ class Seed
     description: "Fruit fresh from the orchard!"
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.fruits_fruit, description: Faker::Products.fruits_description,
-      image_url: Faker::Products.fruits_image, price: Faker::Commerce.price.to_d + 1,
+      price: Faker::Commerce.price.to_d + 1,
       category_id: fruit.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.fruits_image}")))
+      product.save!
     end
     stores = []
     10.times do |i|
@@ -190,11 +200,13 @@ class Seed
     description: "Perfect for making your home made bread."
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.grains_grain, description: Faker::Products.grains_description,
-      image_url: Faker::Products.grains_image, price: Faker::Commerce.price.to_d + 1,
+      price: Faker::Commerce.price.to_d + 1,
       category_id: grains.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.grains_image}")))
+      product.save!
     end
     stores = []
     10.times do |i|
@@ -222,11 +234,13 @@ class Seed
     description: "No, not that kind of herb."
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.herbs_herb, description: Faker::Products.herbs_description,
-      image_url: Faker::Products.herbs_image, price: Faker::Commerce.price.to_d + 1,
+      price: Faker::Commerce.price.to_d + 1,
       category_id: herbs.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.herbs_image}")))
+      product.save!
     end
     stores = []
     10.times do |i|
@@ -254,11 +268,13 @@ class Seed
     description: "Perfect for that garden you've been wanting to grow!"
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.seeds_seed, description: Faker::Products.seeds_description,
-      image_url: Faker::Products.seeds_image, price: Faker::Commerce.price.to_d + 1,
+      price: Faker::Commerce.price.to_d + 1,
       category_id: seeds.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.seeds_image}")))
+      product.save!
     end
     stores = []
     10.times do |i|
@@ -286,11 +302,13 @@ class Seed
     description: "Fall is right around the corner, get some freshly harvested vegetables for your supper!"
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.vegetables_vegetable, description: Faker::Products.vegetables_description,
-      image_url: Faker::Products.vegetables_image, price: Faker::Commerce.price.to_d + 1,
+      price: Faker::Commerce.price.to_d + 1,
       category_id: vegetables.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.vegetables_image}")))
+      product.save!
     end
     stores = []
     10.times do |i|
@@ -318,11 +336,13 @@ class Seed
     description: "Delicious and refreshing."
     )
     50.times do |i|
-      Product.create!(
+      product = Product.create!(
       name: Faker::Products.drinks_drink, description: Faker::Products.drinks_description,
-      image_url: Faker::Products.drinks_image, price: Faker::Commerce.price.to_d + 1,
+      price: Faker::Commerce.price.to_d + 1,
       category_id: drinks.id
       )
+      product.image_url.store!(File.open(File.join(Rails.root, "app/assets/images/#{Faker::Products.drinks_image}")))
+      product.save!
     end
     stores = []
     10.times do |i|
