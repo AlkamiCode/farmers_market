@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize!
-      redirect_to root_path, danger: "Not Allowed" unless authorized?
+    redirect_to root_path, danger: "Not Allowed" unless authorized?
   end
 
   def load_featured_products

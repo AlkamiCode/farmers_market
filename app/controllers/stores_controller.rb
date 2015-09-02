@@ -35,8 +35,9 @@ class StoresController < ApplicationController
   def update
     @store = current_store
     @store.update(store_params)
+
     flash[:success] = "#{@store.farm_name} has been updated."
-    redirect_to admin_dashboard_path(@store.farm_name)
+    redirect_to admin_dashboard_path(@store.url)
   end
 
   private

@@ -3,15 +3,33 @@ require "factory_helper"
 
 feature "Admin can edit Farm Profile" do
   before do
-    build_farms
+    @user_one = User.create(
+    email: "amaluna@cds.com",
+    password: "password",
+    first_name: "Ama",
+    last_name: "Luna"
+    )
+
+    @user_one.roles << Role.find_or_create_by(name: "store_admin")
+
+    store_one = Store.create(
+    id: 1,
+    farm_name: "Amaluna Farms",
+    facebook_url: "www.facebook.com",
+    photo_url: "farmers/amish-hay.jpg",
+    twitter_url: "www.twitter.com",
+    instagram_url: "www.instagram.com",
+    description: "French Farm Fresh Food served by acrobats in tights.  How much more French can you get?",
+    url: "amaluna-farms",
+    user_id: @user_one.id
+    )
 
     @user_one.addresses.create(type_of:   2,
-                          address_1: "123 Sesame St",
-                          address_2: "Apt 123",
-                          city:      "New York",
-                          state:     "NY",
-                          zip_code:  "12345")
-    @user_one.roles.create(name: "store_admin")
+    address_1: "123 Sesame St",
+    address_2: "Apt 123",
+    city:      "New York",
+    state:     "NY",
+    zip_code:  "12345")
 
     visit root_path
     visit admin_dashboard_path(@user_one.store)
@@ -30,91 +48,34 @@ feature "Admin can edit Farm Profile" do
     click_link "Edit Farm Profile"
     expect(current_path).to eq("/admin/amaluna-farms/profile/edit")
   end
-  xscenario "Admin logs in and views edit form" do
-    within("#login-info") do
-      expect(find_field("user_first_name").value).to eq("Jane")
-      expect(find_field("user_last_name").value).to eq("Doe")
-      expect(find_field("user_email").value).to eq("jane@doe.com")
-    end
 
-    within("#billing-info") do
-      expect(find_field("address_address_1").value).to eq("1313 Mockingbird Ln")
-      expect(find_field("address_address_2").value).to eq("Ste 13")
-      expect(find_field("address_city").value).to eq("Walla Walla")
-      expect(find_field("address_state").value).to eq("PA")
-      expect(find_field("address_zip_code").value).to eq("13131")
-    end
+  scenario "Admin logs in and views edit form" do
+    allow_any_instance_of(ApplicationController)
+    .to receive(:current_user).and_return(@user_one)
+    page.set_rack_session(user_id: @user_one.id)
 
-    within("#shipping-info") do
-      expect(find_field("address_address_1").value).to eq("123 Sesame St")
-      expect(find_field("address_address_2").value).to eq("Apt 123")
-      expect(find_field("address_city").value).to eq("New York")
-      expect(find_field("address_state").value).to eq("NY")
-      expect(find_field("address_zip_code").value).to eq("12345")
+    visit admin_stores_edit_path(@user_one.store)
+
+    within(".well") do
+      expect(find_field("store[farm_name]").value).to eq("Amaluna Farms")
+      expect(find_field("store[description]").value.first).to eq("F")
+      expect(find_field("store[facebook_url]").value).to eq("www.facebook.com")
     end
   end
 
-  xscenario "updates Login Info" do
-    within("#login-info") do
-      find('input[type="text"][name*="user[first_name]"]').set("John")
-      find('input[type="text"][name*="user[last_name]"]').set("Doh")
-      find('input[type="text"][name*="user[email]"]').set("john@doh.com")
-      find('input[type="password"][name*="user[password]"]').set("password")
-      click_button "Update Login Info"
-    end
+  scenario "updates store Info" do
+    allow_any_instance_of(ApplicationController)
+    .to receive(:current_user).and_return(@user_one)
+    page.set_rack_session(user_id: @user_one.id)
 
-    within(".alert-success") do
-      expect(page).to have_content("Your account has been updated.")
-    end
+    visit admin_stores_edit_path(@user_one.store)
 
-    expect(find_field("user_first_name").value).to eq("John")
-    expect(find_field("user_last_name").value).to eq("Doh")
-    expect(find_field("user_email").value).to eq("john@doh.com")
-  end
+    fill_in "store[farm_name]", with: "new farm"
+    fill_in "store[facebook_url]", with: "myspace.com"
+    click_button "Update Profile"
 
-  xscenario "updates Billing Address" do
-    within("#billing-info") do
-      find('input[type="text"][name*="address[address_1]"]').set("1 Billing Address Way")
-      find('input[type="text"][name*="address[address_2]"]').set("Unit 2")
-      find('input[type="text"][name*="address[city]"]').set("Arlington")
-      find('input[type="text"][name*="address[state]"]').set("TX")
-      find('input[type="text"][name*="address[zip_code]"]').set("76014")
-      click_button "Update Billing Address"
-    end
+    expect(current_path).to eq(admin_dashboard_path(@user_one.store.url))
 
-    within(".alert-success") do
-      expect(page).to have_content("Your address has been updated.")
-    end
-
-    within("#billing-info") do
-      expect(find_field("address_address_1").value).to eq("1 Billing Address Way")
-      expect(find_field("address_address_2").value).to eq("Unit 2")
-      expect(find_field("address_city").value).to eq("Arlington")
-      expect(find_field("address_state").value).to eq("TX")
-      expect(find_field("address_zip_code").value).to eq("76014")
-    end
-  end
-
-  xscenario "updates Shipping Address" do
-    within("#shipping-info") do
-      find('input[type="text"][name*="address[address_1]"]').set("2 Shipping Address Pl")
-      find('input[type="text"][name*="address[address_2]"]').set("#5")
-      find('input[type="text"][name*="address[city]"]').set("Denver")
-      find('input[type="text"][name*="address[state]"]').set("CO")
-      find('input[type="text"][name*="address[zip_code]"]').set("80223")
-      click_button "Update Shipping Address"
-    end
-
-    within(".alert-success") do
-      expect(page).to have_content("Your address has been updated.")
-    end
-
-    within("#shipping-info") do
-      expect(find_field("address_address_1").value).to eq("2 Shipping Address Pl")
-      expect(find_field("address_address_2").value).to eq("#5")
-      expect(find_field("address_city").value).to eq("Denver")
-      expect(find_field("address_state").value).to eq("CO")
-      expect(find_field("address_zip_code").value).to eq("80223")
-    end
+    expect(@user_one.store.farm_name).to eq("new farm")
   end
 end
