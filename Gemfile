@@ -11,6 +11,7 @@ gem 'carrierwave'
 gem "fog-google"
 gem 'rmagick'
 gem 'faker'
+gem 'rails_12factor', group: :production
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # Use SCSS for stylesheets
