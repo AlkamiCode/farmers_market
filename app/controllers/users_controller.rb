@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       redirect_to store_account_new_path
     elsif @user.save
       session[:user_id] = @user.id
+      @user.roles << Role.find_or_create_by(name: "registered_user")
       flash[:success] = "Welcome to Farmers Market," \
         " #{@user.first_name} #{@user.last_name}!"
         NotificationsMailer.new_user(user_params).deliver_now
