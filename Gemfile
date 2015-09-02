@@ -55,7 +55,7 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'rack_session_access'
-
+  gem 'simplecov', :require => false, :group => :test
   gem 'better_errors'
   gem 'awesome_print'
 
