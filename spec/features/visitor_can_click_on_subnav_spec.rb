@@ -26,7 +26,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Fruit 3")
       expect(page).to have_content("19.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/fruit/bananas.jpg\"]")
     end
   end
 
@@ -54,7 +53,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Baked Good 3")
       expect(page).to have_content("29.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/baked_goods/pie.jpg\"]")
     end
   end
 
@@ -81,7 +79,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Canned Good 3")
       expect(page).to have_content("19.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/canned_goods/jelly.jpg\"]")
     end
   end
 
@@ -109,7 +106,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Craft 3")
       expect(page).to have_content("19.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/crafts/bus.jpg\"]")
     end
   end
 
@@ -137,7 +133,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Drink 3")
       expect(page).to have_content("19.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/drinks/soda.jpg\"]")
     end
   end
 
@@ -165,7 +160,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Flower 3")
       expect(page).to have_content("19.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/flowers/vase.jpg\"]")
     end
   end
 
@@ -193,7 +187,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Grain 3")
       expect(page).to have_content("19.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/grains/wheat.jpg\"]")
     end
   end
 
@@ -221,7 +214,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Herb 3")
       expect(page).to have_content("19.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/herbs/fresh-herbs.jpg\"]")
     end
   end
 
@@ -249,7 +241,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Seed 3")
       expect(page).to have_content("19.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/seeds/seeds.jpg\"]")
     end
   end
 
@@ -277,7 +268,6 @@ feature "a visitor" do
       expect(page).to have_selector(".thumbnail", count: 3)
       expect(page).to have_content("Vegetable 3")
       expect(page).to have_content("19.99")
-      expect(page).to have_xpath("//img[@src=\"/assets/vegetables/tomatoes.jpg\"]")
     end
   end
 end

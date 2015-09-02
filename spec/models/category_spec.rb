@@ -26,15 +26,12 @@ RSpec.describe Category, type: :model do
     expect(category.products.find(product_1.id).name).to eq("Venus Fly Trap")
     expect(category.products.find(product_1.id).description).to eq(
       "The gold standard of carnivorous plants!")
-    expect(category.products.find(product_1.id).image_url).to eq(
-      "venus_fly_trap.jpg")
     expect(category.products.find(product_1.id).price).to eq(19.99)
 
     expect(category.products.find(product_2.id).name).to eq("Pitcher Plant")
     expect(category.products.find(product_2.id).description).to eq(
       "The silver standard of carnivorous plants!")
-    expect(category.products.find(product_2.id).image_url).to eq(
-      "pitcher_plant.jpg")
+
     expect(category.products.find(product_2.id).price).to eq(14.99)
   end
 
