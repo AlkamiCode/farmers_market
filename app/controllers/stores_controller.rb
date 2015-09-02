@@ -21,6 +21,7 @@ class StoresController < ApplicationController
       current_user.store = @store
       flash[:success] = "Welcome to Farmers Market," \
         " #{@store.farm_name}!"
+      NotificationsMailer.new_store(current_user).deliver_now
       redirect_to "/admin/#{@store.url}/addresses/new"
     else
       flash[:danger] = "Please try again!"
