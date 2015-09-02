@@ -21,7 +21,8 @@ class ChargesController < ApplicationController
     if charge["paid"] == true
       @order = Order.create(user_id: current_user.id,
                            status: "paid")
-      cart.cart_items.each do |cart_item|
+      paid_cart_items = cart.cart_items
+      paid_cart_items.each do |cart_item|
         OrderItem.create(order_id: @order.id,
                          product_id: cart_item.id,
                          quantity: cart_item.quantity,
@@ -31,6 +32,7 @@ class ChargesController < ApplicationController
       cart.clear
 
       NotificationsMailer.user_order(current_user).deliver_now
+      NotificationsMailer.store_order(paid_cart_items).deliver_now
       flash[:success] = "Your payment was successful and your order is placed."
 
       redirect_to order_path(@order)

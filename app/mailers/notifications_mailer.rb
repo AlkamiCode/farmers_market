@@ -28,4 +28,22 @@ class NotificationsMailer < ApplicationMailer
         }
     end
   end
+
+  def store_order(paid_cart_items)
+    stores = paid_cart_items.map do |cart_item|
+              cart_item.store_id
+             end
+    users = stores.map do |store|
+              Store.find(store).user_id
+            end
+    emails = users.map do |user|
+               User.find(user).email
+             end
+    emails.each do |email|
+      mail(
+      to: email,
+      subject: "Cha! Ching! An order has been placed!"
+      )
+    end
+  end
 end
