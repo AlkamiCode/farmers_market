@@ -219,7 +219,7 @@ def build_farms
 
   @user_one.roles << Role.find_or_create_by(name: "store_admin")
 
-  store_one = Store.create(
+  @store_one = Store.create(
     id: 1,
     farm_name: "Amaluna Farms",
     facebook_url: "www.facebook.com",
@@ -230,6 +230,5 @@ def build_farms
     url: "amaluna-farms",
     user_id: @user_one.id
   )
-
 
 end
