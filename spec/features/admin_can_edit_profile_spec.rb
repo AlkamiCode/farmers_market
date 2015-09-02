@@ -74,8 +74,8 @@ feature "Admin can edit Farm Profile" do
     fill_in "store[facebook_url]", with: "myspace.com"
     click_button "Update Profile"
 
-    expect(current_path).to eq(admin_dashboard_path(@user_one.store.url))
+    expect(current_path).to eq("/admin/new-farm/dashboard")
 
-    expect(@user_one.store.farm_name).to eq("new farm")
+    expect(Store.last.farm_name).to eq("new farm")
   end
 end

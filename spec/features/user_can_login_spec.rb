@@ -30,7 +30,7 @@ feature "a user can login" do
     click_button "Login"
 
 
-    expect(current_path).to eq("/")
+    expect(current_path).to eq("/admin/amaluna-farms/dashboard")
     within(".alert-success") do
       expect(page).to have_content("Welcome back to Farmer Market, Ama Luna!")
 
