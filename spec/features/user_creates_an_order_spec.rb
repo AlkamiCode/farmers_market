@@ -1,23 +1,26 @@
 require "rails_helper"
+require "factory_helper"
 
 feature "Existing user places an order" do
   context "while logged and with a cart with products" do
     before do
-      user = User.create(first_name: "Jane",
+      @user = User.create(first_name: "Jane",
                          last_name:  "Doe",
-                         email:      "jane@gmail.com",
+                         email:      "jane@doe.com",
                          password:   "password")
+
+      @user.roles << Role.find_or_create_by(name:"registered_user")
 
       category = Category.create(name: "Plants",
                                  description: "Plants category description",
                                  slug: "plants")
 
-      product_1 = category.products.create(name:        "Plant1",
-                                           description: "Plant 1 description",
+      product_1 = category.products.create(name:        "Fruit1",
+                                           description: "Fruit 1 description",
                                            price:       9.99)
 
-      product_2 = category.products.create(name:        "Plant2",
-                                           description: "Plant 2 description",
+      product_2 = category.products.create(name:        "Fruit2",
+                                           description: "Fruit 2 description",
                                            price:       19.99)
 
       user_cart = Cart.new(nil)
@@ -25,14 +28,15 @@ feature "Existing user places an order" do
       user_cart.add_item(product_2)
 
       allow_any_instance_of(ApplicationController)
-        .to receive(:current_user).and_return(user)
+        .to receive(:current_user)
+        .and_return(@user)
+      page.set_rack_session(user_id: @user.id)
 
       allow_any_instance_of(ApplicationController)
         .to receive(:cart).and_return(user_cart)
     end
 
-    scenario "successfully places an order for two different products" do
-      skip
+    xscenario "successfully places an order for two different products" do
       visit cart_path
       click_button("Checkout")
 
@@ -47,12 +51,12 @@ feature "Existing user places an order" do
       visit cart_path
       expect(current_path).to eq(cart_path)
 
-      expect(page).to_not have_content("Plant1")
-      expect(page).to_not have_content("Plant2")
+      expect(page).to_not have_content("Fruit1")
+      expect(page).to_not have_content("Fruit2")
     end
   end
 
-  xcontext "as a visitor, before logging in" do
+  context "as a visitor, before logging in" do
     scenario "user is is not able to checkout" do
       visit cart_path
 
@@ -60,16 +64,20 @@ feature "Existing user places an order" do
     end
   end
 
-  xcontext "while logged in with an empty cart" do
+  context "while logged in with an empty cart" do
     scenario "user is not able to checkout" do
-      user = User.create(first_name: "Jane",
+      @user = User.create(first_name: "Jane",
                          last_name:  "Doe",
-                         email:      "jane@gmail.com",
+                         email:      "jane@doe.com",
                          password:   "password")
 
+      @user.roles << Role.find_or_create_by(name:"registered_user")
+
       allow_any_instance_of(ApplicationController)
-        .to receive(:current_user).and_return(user)
-      
+        .to receive(:current_user)
+        .and_return(@user)
+      page.set_rack_session(user_id: @user.id)
+
       visit cart_path
 
       expect(page).to_not have_link("Checkout")
