@@ -11,10 +11,4 @@ class Product < ActiveRecord::Base
 
   scope :active, -> { where(status: 0) }
   scope :inactive, -> { where(status: 1) }
-
-  private
-  #
-  # def set_default_image
-  #   self.image_url = "default_image.jpg" if image_url && image_url.empty?
-  # end
 end

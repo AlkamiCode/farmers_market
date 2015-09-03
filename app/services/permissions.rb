@@ -10,7 +10,6 @@ class Permissions
   def allow?(controller, action)
     @controller = controller
     @action = action
-
     if user && user.store_admin?
       store_admin_permissions
     elsif user && user.registered_user?
@@ -53,7 +52,7 @@ class Permissions
     return true if controller == "sessions" && action.in?(%w(new create destroy))
     return true if controller == "products" && action.in?(%w(index show create update))
     return true if controller == "orders" && action.in?(%w(index show update index_ordered index_paid index_cancelled index_completed))
-    return true if controller == "users" && action.in?(%w(index show))
+    return true if controller == "users" && action.in?(%w(index show edit update))
     return true if controller == "static_pages" && action == 'index'
     return true if controller == "cart_items" && action.in?(%w(index create update destroy))
     return true if controller == "admin/stores" && action == "index"
@@ -68,9 +67,10 @@ class Permissions
     return true if controller == "admin/admins" && action.in?(%w(show))
     return true if controller == "admin/products" && action.in?(%w(index new edit update create))
     return true if controller == "admin/orders" && action.in?(%w(index show update))
+    return true if controller == "charges" && action.in?(%w(create))
   end
 
-  def platform_admin_permissions #needs build out
+  def platform_admin_permissions
     return true if controller == "stores" && action.in?(%w(index show))
     return true if controller == "sessions" && action.in?(%w(new create destroy))
     return true if controller == "products" && action.in?(%w(index show create update))
