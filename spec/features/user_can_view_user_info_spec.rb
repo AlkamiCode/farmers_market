@@ -1,34 +1,40 @@
 require "rails_helper"
+require "factory_helper"
 
 feature "User can view User info" do
   before do
-    user = User.create(first_name: "Jane",
+    @user = User.create(first_name: "Jane",
                        last_name:  "Doe",
                        email:      "jane@doe.com",
                        password:   "password")
+                       
+    @user.roles << Role.find_or_create_by(name:"registered_user")
 
-    user.addresses.create(type_of:   "billing",
+    @user.addresses.create(type_of:   "billing",
                           address_1: "1313 Mockingbird Ln",
                           address_2: "Ste 13",
                           city:      "Walla Walla",
                           state:     "PA",
                           zip_code:  "13131")
 
-    user.addresses.create(type_of:   "shipping",
+    @user.addresses.create(type_of:   "shipping",
                           address_1: "123 Sesame St",
                           address_2: "Apt 123",
                           city:      "New York",
                           state:     "NY",
                           zip_code:  "12345")
+    build_products
+    build_farms
 
-    allow_any_instance_of(ApplicationController)
-      .to receive(:current_user)
-      .and_return(user)
+
   end
 
-  xscenario "User visits Dashboard and sees all User info" do
+  scenario "User visits Dashboard and sees all User info" do
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(@user)
+    page.set_rack_session(user_id: @user.id)
     visit dashboard_path
-
     expect(page).to have_content("Jane")
     expect(page).to have_content("Doe")
     expect(page).to have_content("jane@doe.com")
