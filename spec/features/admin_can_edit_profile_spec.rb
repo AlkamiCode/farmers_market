@@ -63,7 +63,7 @@ feature "Admin can edit Farm Profile" do
     end
   end
 
-  scenario "updates store Info" do
+  scenario "updates store info" do
     allow_any_instance_of(ApplicationController)
     .to receive(:current_user).and_return(@user_one)
     page.set_rack_session(user_id: @user_one.id)

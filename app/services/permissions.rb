@@ -70,16 +70,16 @@ class Permissions
     return true if controller == "admin/orders" && action.in?(%w(index show update))
   end
 
-  def platform_admin_permissions #needs build out
-    return true if controller == "stores" && action.in?(%w(index show))
-    return true if controller == "sessions" && action.in?(%w(new create destroy))
-    return true if controller == "products" && action.in?(%w(index show create update))
-    return true if controller == "orders" && action.in?(%w(index show update index_ordered index_paid index_cancelled index_completed))
-    return true if controller == "users" && action == 'index'
-    return true if controller == "static_pages" && action == 'index'
-    return true if controller == "cart_items" && action.in?(%w(index create update destroy))
-    return true if controller == "products" && action.in?(%w(index show))
-    return true if controller == "categories" && action == "show"
-    return true if controller == "stores/products" && action.in?(%w(index))
-  end
+  # def platform_admin_permissions #needs build out
+  #   return true if controller == "stores" && action.in?(%w(index show))
+  #   return true if controller == "sessions" && action.in?(%w(new create destroy))
+  #   return true if controller == "products" && action.in?(%w(index show create update))
+  #   return true if controller == "orders" && action.in?(%w(index show update index_ordered index_paid index_cancelled index_completed))
+  #   return true if controller == "users" && action == 'index'
+  #   return true if controller == "static_pages" && action == 'index'
+  #   return true if controller == "cart_items" && action.in?(%w(index create update destroy))
+  #   return true if controller == "products" && action.in?(%w(index show))
+  #   return true if controller == "categories" && action == "show"
+  #   return true if controller == "stores/products" && action.in?(%w(index))
+  # end
 end

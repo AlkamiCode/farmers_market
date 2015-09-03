@@ -43,6 +43,10 @@ feature "a user can login" do
     expect(page).to have_content("Ama Luna")
     expect(page).to_not have_content("Login")
     expect(page).to have_content("Logout")
+
+    click_link "Logout"
+
+    expect(current_path).to eq root_path
   end
 
   scenario "a visitor without an account can not login" do
