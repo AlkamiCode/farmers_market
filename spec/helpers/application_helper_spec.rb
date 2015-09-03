@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "the application helper will determine the permissions" do
+describe ApplicationHelper do 
 
   it 'returns true for store admin' do
     @admin = User.create(first_name: "Mike",
@@ -9,10 +9,10 @@ feature "the application helper will determine the permissions" do
     password: "12345678",)
     @admin.roles << Role.find_or_create_by(name: "store_admin")
 
-    allow_any_instance_of(ApplicationController)
+    allow_any_instance_of(ApplicationHelper)
     .to receive(:current_user).and_return(@admin)
 
-    expect(@admin.store_admin?).to eq(true)
+    expect(store_admin?).to eq(true)
 
   end
 
@@ -23,10 +23,10 @@ feature "the application helper will determine the permissions" do
     password: "12345678",)
     @admin.roles << Role.find_or_create_by(name: "platform_admin")
 
-    allow_any_instance_of(ApplicationController)
+    allow_any_instance_of(ApplicationHelper)
     .to receive(:current_user).and_return(@admin)
 
-    expect(@admin.platform_admin?).to eq(true)
+    expect(platform_admin?).to eq(true)
 
   end
 
@@ -37,10 +37,10 @@ feature "the application helper will determine the permissions" do
     password: "12345678",)
     user.roles << Role.find_or_create_by(name: "registered_user")
 
-    allow_any_instance_of(ApplicationController)
+    allow_any_instance_of(ApplicationHelper)
     .to receive(:current_user).and_return(user)
 
-    expect(user.registered_user?).to eq(true)
+    expect(registered_user?).to eq(true)
   end
 
   it 'returns false for wrong permissions' do
@@ -50,10 +50,10 @@ feature "the application helper will determine the permissions" do
     password: "12345678",)
     @admin.roles << Role.find_or_create_by(name: "platform_admin")
 
-    allow_any_instance_of(ApplicationController)
+    allow_any_instance_of(ApplicationHelper)
     .to receive(:current_user).and_return(@admin)
 
-    expect(@admin.registered_user?).to eq(false)
+    expect(registered_user?).to eq(false)
   end
 
 end
