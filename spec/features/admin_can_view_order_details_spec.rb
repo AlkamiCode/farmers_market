@@ -42,7 +42,6 @@ feature "admin user" do
     within(".order-status") do
       expect(page).to have_content("Cancelled")
     end
-    save_and_open_page
   end
 
 
