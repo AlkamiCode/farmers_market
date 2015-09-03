@@ -19,13 +19,13 @@ class Admin::AddressesController < Admin::BaseController
   end
 
   def update
-    @address = current_user.addresses
+    @address = current_user.farm_address.first
     if @address.update(address_params)
       flash[:success] = "Your farm address has been updated."
       redirect_to admin_dashboard_path(current_store)
     else
       flash[:warning] = @address.errors.full_messages.join(". ")
-      redirect_to account_edit_path
+      redirect_to "/admin/#{current_store.url}/addresses"
     end
   end
 
