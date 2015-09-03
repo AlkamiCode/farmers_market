@@ -10,7 +10,9 @@ gem "fog", "~> 1.27", require: "fog/rackspace/storage"
 gem 'carrierwave'
 gem "fog-google"
 gem 'rmagick'
+gem "figaro"
 gem 'faker'
+gem 'rails_12factor', group: :production
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # Use SCSS for stylesheets
@@ -64,8 +66,4 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
