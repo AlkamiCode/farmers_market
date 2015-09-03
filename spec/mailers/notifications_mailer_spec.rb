@@ -39,6 +39,10 @@ RSpec.describe NotificationsMailer, type: :mailer do
     it 'renders the sender email' do
       expect(mail.from).to eq(['welcome@farmersmarket.com'])
     end
+
+    it "sends an email" do
+      expect(ActionMailer::Base.deliveries.count == 1)
+    end
   end
 
   describe 'new store mailer' do
@@ -57,6 +61,10 @@ RSpec.describe NotificationsMailer, type: :mailer do
     it 'renders the sender email' do
       expect(mail.from).to eq(['welcome@farmersmarket.com'])
     end
+
+    it "sends an email" do
+      expect(ActionMailer::Base.deliveries.count == 1)
+    end
   end
 
   describe 'user order mailer' do
@@ -73,6 +81,10 @@ RSpec.describe NotificationsMailer, type: :mailer do
 
     it 'renders the sender email' do
       expect(mail.from).to eq(['welcome@farmersmarket.com'])
+    end
+
+    it "sends an email" do
+      expect(ActionMailer::Base.deliveries.count == 1)
     end
   end
 
@@ -112,6 +124,10 @@ RSpec.describe NotificationsMailer, type: :mailer do
 
     it 'renders the sender email' do
       expect(mail.from).to eq(['welcome@farmersmarket.com'])
+    end
+
+    it "sends an email" do
+      expect(ActionMailer::Base.deliveries.count == 1)
     end
 
   end
