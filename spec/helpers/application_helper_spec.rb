@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "the application helper will determine the permissions" do
+describe ApplicationHelper do 
 
   it 'returns true for store admin' do
     @admin = User.create(first_name: "Mike",
@@ -12,7 +12,7 @@ feature "the application helper will determine the permissions" do
     allow_any_instance_of(ApplicationHelper)
     .to receive(:current_user).and_return(@admin)
 
-    expect(@admin.store_admin?).to eq(true)
+    expect(store_admin?).to eq(true)
 
   end
 
@@ -26,7 +26,7 @@ feature "the application helper will determine the permissions" do
     allow_any_instance_of(ApplicationHelper)
     .to receive(:current_user).and_return(@admin)
 
-    expect(@admin.platform_admin?).to eq(true)
+    expect(platform_admin?).to eq(true)
 
   end
 
@@ -40,7 +40,7 @@ feature "the application helper will determine the permissions" do
     allow_any_instance_of(ApplicationHelper)
     .to receive(:current_user).and_return(user)
 
-    expect(user.registered_user?).to eq(true)
+    expect(registered_user?).to eq(true)
   end
 
   it 'returns false for wrong permissions' do
@@ -53,7 +53,7 @@ feature "the application helper will determine the permissions" do
     allow_any_instance_of(ApplicationHelper)
     .to receive(:current_user).and_return(@admin)
 
-    expect(@admin.registered_user?).to eq(false)
+    expect(registered_user?).to eq(false)
   end
 
 end
