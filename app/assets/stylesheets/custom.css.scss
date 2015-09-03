@@ -350,6 +350,15 @@ footer {
   .feature-card.thumbnail {
     height: 280px;
   }
+
+  .admin_edit .caption {
+    height: 288px;
+  }
+
+  .admin_address_edit {
+    position: relative;
+    bottom: -41px;
+  }
 }
 
 @media(min-width:990px) {
@@ -357,8 +366,17 @@ footer {
     height: 500px;
   }
 
-  .feature-card.thumbnail {
+  .feature-card .thumbnail {
     height: 340px;
+  }
+
+  .admin_edit .caption {
+    height: 267px;
+  }
+
+  .admin_address_edit {
+    position: relative;
+    bottom: -20px;
   }
 }
 

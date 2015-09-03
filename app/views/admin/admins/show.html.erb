@@ -21,37 +21,38 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="thumbnail">
-              <%= image_tag current_store.photo_url.url, class: "farmer-image" %>
+    <div class="admin_edit">
+      <div class="col-sm-6">
+        <div class="thumbnail">
+          <%= image_tag current_store.photo_url.url, class: "farmer-image" %>
+          <div class="caption">
+            <p><strong>Farm Name:</strong> <%= current_store.farm_name %></p>
+            <p><strong>Description:</strong> <%= current_store.description %></p>
+            <p><strong>Facebook Url:</strong> <%= link_to current_store.facebook_url, current_store.facebook_url %></p>
+            <p><strong>Twitter Url:</strong> <%= link_to current_store.twitter_url, current_store.twitter_url %></p>
+            <p><strong>Instagram Url:</strong> <%= link_to current_store.instagram_url, current_store.instagram_url %></p>
+            <p><strong>Store Url:</strong> <%= current_store.url %></p>
+            <%= link_to "Edit Farm Profile", admin_stores_edit_path(current_store), class: "btn btn-block btn-primary" %>
           </div>
         </div>
-        <div class="col-sm-6">
-          <p>Farm Name: <%= current_store.farm_name %></p>
-          <p>Description: <%= current_store.description %></p>
-          <p>Facebook Url: <%= current_store.facebook_url %></p>
-          <p>Twitter Url: <%= current_store.twitter_url %></p>
-          <p>Instagram Url: <%= current_store.instagram_url %></p>
-          <p>Store Url: <%= current_store.url %></p>
+      </div>
+      <div class="col-sm-6">
+        <div class="thumbnail">
+          <%= image_tag current_store.photo_url.url, class: "farmer-image" %>
+          <% @current_user_farm_address = current_user.addresses.select{|address| address.type_of == "farm"} %>
+          <% if !@current_user_farm_address.empty? %>
+          <div class="admin_edit caption">
+            <p><strong><%= current_store.farm_name %> address:</strong></p>
+            <p><strong>Address 1:</strong> <%= @current_user_farm_address[0][:address_1] %></p>
+            <p><strong>Address 2:</strong> <%= @current_user_farm_address[0][:address_2] %></p>
+            <p><strong>City:</strong> <%= @current_user_farm_address[0][:city] %></p>
+            <p><strong>State:</strong> <%= @current_user_farm_address[0][:state] %></p>
+            <p><strong>Zipcode:</strong> <%= @current_user_farm_address[0][:zip_code] %></p>
+            <%= link_to "Edit Farm Address", "/admin/#{current_store.url}/addresses", class: "admin_address_edit btn btn-block btn-primary" %>
+            <% end %>
+          </div>
         </div>
-
       </div>
-      <%= link_to "Edit Farm Profile", admin_stores_edit_path(current_store), class: "btn btn-block btn-primary" %>
-      </div>
-
-    <div class="col-sm-6">
-      <% @current_user_farm_address = current_user.addresses.select{|address| address.type_of == "farm"} %>
-      <% if !@current_user_farm_address.empty? %>
-      <p>Address 1: <%= @current_user_farm_address[0][:address_1] %></p>
-      <p>Address 2: <%= @current_user_farm_address[0][:address_2] %></p>
-      <p>City: <%= @current_user_farm_address[0][:city] %></p>
-      <p>State: <%= @current_user_farm_address[0][:state] %></p>
-      <p>Zipcode: <%= @current_user_farm_address[0][:zip_code] %></p>
-      <%= link_to "Edit Farm Address", "/admin/#{current_store.url}/addresses", class: "btn btn-block btn-primary" %>
-      <% end %>
     </div>
-
   </div>
 </div>
