@@ -18,13 +18,16 @@ feature "Guest User can view all farmers" do
     expect(page).to have_button('Profile')
   end
 
-  xscenario "Guest User clicks products page and sees the products for a given farmer" do
+  scenario "Guest User clicks products page and sees the products for a given farmer" do
     click_link('Farmers')
-    expcect(page).to have_button('Products')
+    expect(page).to have_link('Products')
 
-    click_link('Products')
-    expect(page).to have_content('Product info')
-    #Write Product Info tests once links are built
+    within(".farmer-buttons") do
+      click_link('Products')
+    end
+
+    expect(current_path).to eq("/amaluna-farms")
+    expect(page).to have_content('Amaluna Farms')
+    expect(page).to have_content('French Farm Fresh Food served by acrobats in tights.  How much more French can you get?')
   end
-
 end
