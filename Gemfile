@@ -52,6 +52,7 @@ gem 'twilio-ruby'
 gem 'figaro'
 
 group :development, :test do
+  gem "shoulda-kept-respond-with-content-type"
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
