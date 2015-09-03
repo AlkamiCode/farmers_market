@@ -16,9 +16,7 @@ feature "Existing user places an order" do
 
       @user.roles << Role.find_or_create_by(name:"registered_user")
 
-      category = Category.create(name: "Plants",
-      description: "Plants category description",
-      slug: "plants")
+      category = Category.create(name: "Fruit")
 
       product_1 = category.products.create(name:        "Fruit1",
       description: "Fruit 1 description",
