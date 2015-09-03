@@ -36,6 +36,6 @@ class Admin::OrdersController < Admin::BaseController
     order = Order.find(params[:id])
     order.status = params[:status]
     order.save
-    redirect_to admin_orders_path
+    redirect_to admin_orders_path(current_store)
   end
 end
