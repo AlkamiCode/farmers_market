@@ -126,7 +126,7 @@ feature "Admin can edit Farm Profile" do
 
     click_button "Edit Address"
 
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq("/admin/amaluna-farms/addresses")
 
     within(".alert-warning") do
       expect(page).to have_content("Zip code is not a number. Zip code is too long (maximum is 9 characters)")

@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text-center">Edit Farm Address</h1>
   <div class="well col-sm-6 col-sm-offset-3">
-  <%= form_for @address do |f| %>
+  <%= form_for @address, :url => { :controller => "admin/addresses", :action => "update" }  do |f| %>
     <div class="form-group">
       <%= f.label :type_of, "Address Type" %>
       <%= f.select :type_of, Address.type_ofs.map { |k, _| [k.titleize, k] },

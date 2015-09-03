@@ -18,11 +18,7 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(store_params)
     if @store.save
-      current_user.store = @store
-      flash[:success] = "Welcome to Farmers Market," \
-        " #{@store.farm_name}!"
-      NotificationsMailer.new_store(current_user).deliver_now
-      redirect_to "/admin/#{@store.url}/addresses/new"
+      successful_creation
     else
       flash[:danger] = "Please try again!"
       render :new
@@ -36,15 +32,22 @@ class StoresController < ApplicationController
   def update
     @store = current_store
     @store.update(store_params)
-
     flash[:success] = "#{@store.farm_name} has been updated."
     redirect_to admin_dashboard_path(@store.url)
   end
 
   private
 
+  def successful_creation
+    current_user.store = @store
+    flash[:success] = "Welcome to Farmers Market," \
+    " #{@store.farm_name}!"
+    NotificationsMailer.new_store(current_user).deliver_now
+    redirect_to "/admin/#{@store.url}/addresses/new"
+  end
+
   def store_params
     params.require(:store)
-          .permit(:farm_name, :facebook_url, :twitter_url, :instagram_url, :description, :photo_url)
+    .permit(:farm_name, :facebook_url, :twitter_url, :instagram_url, :description, :photo_url)
   end
 end

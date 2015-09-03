@@ -1,6 +1,5 @@
 class Stores::CategoriesController < ApplicationController
   def index
-
   end
 
   def show
