@@ -1,35 +1,41 @@
 require "rails_helper"
+require "factory_helper"
 
 feature "User can edit User info" do
   before do
-    user = User.create(first_name: "Jane",
+    @user = User.create(first_name: "Jane",
                        last_name:  "Doe",
                        email:      "jane@doe.com",
                        password:   "password")
 
-    user.addresses.create(type_of:   0,
+    @user.roles << Role.find_or_create_by(name:"registered_user")
+
+    @user.addresses.create(type_of:   0,
                           address_1: "1313 Mockingbird Ln",
                           address_2: "Ste 13",
                           city:      "Walla Walla",
                           state:     "PA",
                           zip_code:  "13131")
 
-    user.addresses.create(type_of:   1,
+    @user.addresses.create(type_of:   1,
                           address_1: "123 Sesame St",
                           address_2: "Apt 123",
                           city:      "New York",
                           state:     "NY",
                           zip_code:  "12345")
+    build_products
+    build_farms
 
     allow_any_instance_of(ApplicationController)
       .to receive(:current_user)
-      .and_return(user)
+      .and_return(@user)
+    page.set_rack_session(user_id: @user.id)
 
     visit dashboard_path
     click_link "Edit Account"
   end
 
-  xscenario "views edit form and updates Login Info" do
+  scenario "views edit form and updates Login Info" do
     within("#login-info") do
       expect(find_field("user_first_name").value).to eq("Jane")
       expect(find_field("user_last_name").value).to eq("Doe")
@@ -53,7 +59,7 @@ feature "User can edit User info" do
     end
   end
 
-  xscenario "updates Login Info" do
+  scenario "updates Login Info" do
     within("#login-info") do
       find('input[type="text"][name*="user[first_name]"]').set("John")
       find('input[type="text"][name*="user[last_name]"]').set("Doh")
@@ -71,7 +77,7 @@ feature "User can edit User info" do
     expect(find_field("user_email").value).to eq("john@doh.com")
   end
 
-  xscenario "updates Billing Address" do
+  scenario "updates Billing Address" do
     within("#billing-info") do
       find('input[type="text"][name*="address[address_1]"]').set("1 Billing Address Way")
       find('input[type="text"][name*="address[address_2]"]').set("Unit 2")
@@ -94,7 +100,7 @@ feature "User can edit User info" do
     end
   end
 
-  xscenario "updates Shipping Address" do
+  scenario "updates Shipping Address" do
     within("#shipping-info") do
       find('input[type="text"][name*="address[address_1]"]').set("2 Shipping Address Pl")
       find('input[type="text"][name*="address[address_2]"]').set("#5")

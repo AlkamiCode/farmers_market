@@ -2,11 +2,17 @@ require "rails_helper"
 require "factory_helper"
 
 feature "Visitor" do
-  before { build_products }
+
+  before do
+    build_products
+    build_farms
+  end
 
   context "who is not logged in with an empty cart" do
-    xscenario "adds one item to cart twice" do
-      item1 = @plants.products.first
+    scenario "adds one item" do
+      item1 = @fruit.products.first
+
+      @store_one.products << item1
 
       visit product_path(item1)
       within(".caption-full") do
@@ -27,10 +33,10 @@ feature "Visitor" do
       expect(current_path).to eq(cart_path)
 
       within(".name") do
-        expect(page).to have_content("Plant 1")
+        expect(page).to have_content("Fruit 1")
       end
 
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("2")
       end
@@ -40,9 +46,12 @@ feature "Visitor" do
       end
     end
 
-    xscenario "adds two items to the cart" do
-      item1 = @plants.products.first
-      item2 = @food.products.last
+    scenario "adds two items to the cart" do
+      item1 = @fruit.products.first
+      item2 = @grains.products.last
+
+      @store_one.products << item1
+      @store_one.products << item2
 
       visit product_path(item1)
       within(".caption-full") do
@@ -64,24 +73,27 @@ feature "Visitor" do
       find("#cart").click
 
       expect(current_path).to eq(cart_path)
-      within(".row", text: "Plant 1") do
-        expect(page).to have_content("Plant 1")
+      within(".row", text: "Fruit 1") do
+        expect(page).to have_content("Fruit 1")
         quantity = find(".quantity").value
         expect(quantity).to eq("2")
         expect(page).to have_content("$39.98")
       end
-
-      within(".row", text: "Food 3") do
-        expect(page).to have_content("Food 3")
+      within(".row", text: "Grain 3") do
+        expect(page).to have_content("Grain")
         quantity = find(".quantity").value
         expect(quantity).to eq("1")
         expect(page).to have_content("$39.99")
       end
     end
 
-    xscenario "adds two items and updates the quantity of one" do
-      item1 = @plants.products.first
-      item2 = @food.products.last
+    scenario "adds two items and updates the quantity of one" do
+      item1 = @fruit.products.first
+      item2 = @grains.products.last
+
+      @store_one.products << item1
+      @store_one.products << item2
+
       visit product_path(item1)
       within(".caption-full") do
         click_button "Add to Cart"
@@ -94,14 +106,14 @@ feature "Visitor" do
 
       find("#cart").click
 
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         find(".quantity").set("4")
         click_button("update")
       end
 
       expect(current_path).to eq(cart_path)
 
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("4")
         expect(page).to have_content("$79.96")
@@ -112,8 +124,10 @@ feature "Visitor" do
       end
     end
 
-    xscenario "adds an item twice and then decreases the quantity to one" do
-      item = @plants.products.first
+    scenario "adds an item twice and then decreases the quantity to one" do
+      item = @fruit.products.first
+
+      @store_one.products << item
       visit product_path(item)
       within(".caption-full") do
         click_button "Add to Cart"
@@ -123,7 +137,7 @@ feature "Visitor" do
       end
 
       find("#cart").click
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("2")
         expect(page).to have_content("$39.98")
@@ -133,7 +147,7 @@ feature "Visitor" do
         expect(page).to have_content("$39.98")
       end
 
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         find(".quantity").set("1")
         click_button("update")
       end
@@ -153,8 +167,11 @@ feature "Visitor" do
       end
     end
 
-    xscenario "adds an item and attempts to decrease the quantity negative or zero" do
-      item = @plants.products.first
+    scenario "adds an item and attempts to decrease the quantity negative or zero" do
+      item = @fruit.products.first
+
+      @store_one.products << item
+
       visit product_path(item)
       within(".caption-full") do
         click_button "Add to Cart"
@@ -162,7 +179,7 @@ feature "Visitor" do
 
       find("#cart").click
 
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         find(".quantity").set("0")
         click_button("update")
       end
@@ -170,7 +187,7 @@ feature "Visitor" do
       expect(current_path).to eq(cart_path)
       expect(page).to have_content("Cannot set quantity below one.")
 
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("1")
         within(".sub-total") do
@@ -178,7 +195,7 @@ feature "Visitor" do
         end
       end
 
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         find(".quantity").set("-5")
         click_button("update")
       end
@@ -186,7 +203,7 @@ feature "Visitor" do
       expect(current_path).to eq(cart_path)
       expect(page).to have_content("Cannot set quantity below one.")
 
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("1")
         within(".sub-total") do
@@ -195,15 +212,18 @@ feature "Visitor" do
       end
     end
 
-    xscenario "adds an item and then clicks the remove link" do
-      item = @plants.products.first
+    scenario "adds an item and then clicks the remove link" do
+      item = @fruit.products.first
+
+      @store_one.products << item
+
       visit product_path(item)
       within(".caption-full") do
         click_button "Add to Cart"
       end
 
       find("#cart").click
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         quantity = find(".quantity").value
         expect(quantity).to eq("1")
         expect(page).to have_content("$19.99")
@@ -213,16 +233,16 @@ feature "Visitor" do
         expect(page).to have_content("$19.99")
       end
 
-      within(".row", text: "Plant 1") do
+      within(".row", text: "Fruit 1") do
         click_link("remove")
       end
 
       expect(current_path).to eq(cart_path)
 
       within(".flash") do
-        expect(page).to have_content("Successfully removed Plant 1 " \
+        expect(page).to have_content("Successfully removed Fruit 1 " \
           "from your cart")
-        expect(page).to have_link("Plant 1")
+        expect(page).to have_link("Fruit 1")
         expect(page).to have_xpath("//a[@href=\"/products/#{item.id}\"]")
       end
 
