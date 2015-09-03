@@ -18,3 +18,4 @@
 /config/application.yml
 
 coverage
+/config/secrets.yml
