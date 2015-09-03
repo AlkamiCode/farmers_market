@@ -67,7 +67,7 @@ class Permissions
     return true if controller == "addresses" && action.in?(%w(new create))
     return true if controller == "admin/admins" && action.in?(%w(show))
     return true if controller == "admin/products" && action.in?(%w(index new edit update create))
-    return true if controller == "admin/orders" && action.in?(%w(index show))
+    return true if controller == "admin/orders" && action.in?(%w(index show update))
   end
 
   def platform_admin_permissions #needs build out
