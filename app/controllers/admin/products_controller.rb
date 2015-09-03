@@ -12,7 +12,6 @@ class Admin::ProductsController < Admin::BaseController
   def create
     @product = current_store.products.new(product_params)
     if @product.save
-
       flash[:success] = "#{@product.name} has been added."
       redirect_to admin_dashboard_path
     else

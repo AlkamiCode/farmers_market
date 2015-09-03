@@ -6,7 +6,21 @@ class AddressesController < ApplicationController
   def create
     user = User.find(current_user.id)
     @address = user.addresses.new(address_params)
+    check_for_create
+  end
 
+  def edit
+    @address = current_user.addresses.first
+  end
+
+  def update
+    @address = Address.find(params[:id])
+    check_for_update
+  end
+
+  private
+
+  def check_for_create
     if @address.save
       flash[:success] = "Address created."
       redirect_to account_edit_path
@@ -16,13 +30,7 @@ class AddressesController < ApplicationController
     end
   end
 
-  def edit
-    @address = current_user.addresses.first
-  end
-
-  def update
-    @address = Address.find(params[:id])
-
+  def check_for_update
     if @address.update(address_params) && current_store
       flash[:success] = "Your farm address has been updated."
       redirect_to admin_dashboard_path(current_store)
@@ -35,10 +43,8 @@ class AddressesController < ApplicationController
     end
   end
 
-  private
-
   def address_params
     params.require(:address)
-          .permit(:type_of, :address_1, :address_2, :city, :state, :zip_code)
+    .permit(:type_of, :address_1, :address_2, :city, :state, :zip_code)
   end
 end

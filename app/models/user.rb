@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     roles.exists?(name: "registered_user")
   end
 
+  def farm_address
+    self.addresses.select{|address| address.type_of == "farm"}
+  end
+
   private
 
   def strip_whitespace
