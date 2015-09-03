@@ -4,30 +4,6 @@ class Admin::OrdersController < Admin::BaseController
     @status = :all
   end
 
-  def index_ordered
-    @orders = current_store.get_orders
-    @status = :ordered
-    render :index
-  end
-
-  def index_paid
-    @orders = current_store.get_orders
-    @status = :paid
-    render :index
-  end
-
-  def index_cancelled
-    @orders = current_store.get_orders
-    @status = :cancelled
-    render :index
-  end
-
-  def index_completed
-    @orders = current_store.get_orders
-    @status = :completed
-    render :index
-  end
-
   def show
     @order = Order.find(params[:id])
   end

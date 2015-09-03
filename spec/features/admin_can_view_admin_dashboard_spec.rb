@@ -1,18 +1,13 @@
 require "rails_helper"
+require 'factory_helper'
 
 feature "Admin can view Admin Dashboard" do
-  scenario "Admin logs in and sees Admin Dashboard for /admin/dashboard" do
-    # @user = User.create(first_name: "Admin",
-    #             last_name: "Admin",
-    #             email: "admin@admin.com",
-    #             password: "password",
-    #             )
 
+  before do
     build_farms
-    @user_one.roles << Role.create(name: "store_admin")
-    #
-    # @user.store = Store.create()
-
+    @user_one.roles << Role.find_or_create_by(name: "store_admin")
+  end
+  scenario "Admin logs in and sees Admin Dashboard for /admin/dashboard" do
     visit login_path
 
     fill_in "Email", with: "amaluna@cds.com"
@@ -21,10 +16,9 @@ feature "Admin can view Admin Dashboard" do
 
 
     expect(current_path).to eq(admin_dashboard_path(@user_one.store))
-    #expect(page).to have_content("Admin Dashboard")
   end
 
-  xscenario "Non-admin logs in and sees 404 page for /admin/dashboard" do
+  scenario "Non-admin logs in and is redirected to landing page" do
     user = User.create(first_name: "Jane",
                 last_name: "Doe",
                 email: "jane@doe.com",
@@ -33,7 +27,7 @@ feature "Admin can view Admin Dashboard" do
 
     role = Role.create(name: "registered_user")
 
-    user.roles = role
+    user.roles << role
 
     visit login_path
 
@@ -41,14 +35,14 @@ feature "Admin can view Admin Dashboard" do
     fill_in "Password", with: "password"
     click_button "Login"
 
-    visit admin_dashboard_path
+    visit admin_dashboard_path(@user_one.store)
 
-    expect(page).to have_content("The page you were looking for doesn't exist.")
+    expect(current_path).to eq("/")
   end
 
-  xscenario "Non-user sees 404 page for /admin/dashboard" do
-    visit admin_dashboard_path
+  scenario "Non-user is also redirected to landing page" do
+    visit admin_dashboard_path(@user_one.store)
 
-    expect(page).to have_content("The page you were looking for doesn't exist.")
+    expect(current_path).to eq("/")
   end
 end

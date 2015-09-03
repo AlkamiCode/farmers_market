@@ -16,8 +16,8 @@ feature "admin can see all orders" do
                                        state: "IL",
                                        zip_code: "60174",
                                        type_of: "farm")
-                                       
-    @admin.roles << Role.create(name: "store_admin")
+
+    @admin.roles << Role.find_or_create_by(name: "store_admin")
 
     @admin.store = Store.create(farm_name: "Carmer's Ranch", facebook_url: "https://www.facebook.com/turingschool",
     instagram_url: "https://instagram.com/", twitter_url: "twitter.com",
