@@ -1,6 +1,7 @@
 require 'simplecov'
 SimpleCov.start do
   add_filter 'spec'
+  add_filter "/faker/"
 end
 require 'rack_session_access/capybara'
 
