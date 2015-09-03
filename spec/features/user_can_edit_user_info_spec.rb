@@ -77,6 +77,24 @@ feature "User can edit User info" do
     expect(find_field("user_email").value).to eq("john@doh.com")
   end
 
+  scenario "updates Login Info with wrong password" do
+    within("#login-info") do
+      find('input[type="text"][name*="user[first_name]"]').set("John")
+      find('input[type="text"][name*="user[last_name]"]').set("Doh")
+      find('input[type="text"][name*="user[email]"]').set("john@doh.com")
+      find('input[type="password"][name*="user[password]"]').set("12345")
+      click_button "Update Login Info"
+    end
+
+    within(".alert-warning") do
+      expect(page).to have_content("Invalid password. Please re-enter to update your login info.")
+    end
+
+    expect(find_field("user_first_name").value).to eq("Jane")
+    expect(find_field("user_last_name").value).to eq("Doe")
+    expect(find_field("user_email").value).to eq("jane@doe.com")
+  end
+
   scenario "updates Billing Address" do
     within("#billing-info") do
       find('input[type="text"][name*="address[address_1]"]').set("1 Billing Address Way")
@@ -97,6 +115,21 @@ feature "User can edit User info" do
       expect(find_field("address_city").value).to eq("Arlington")
       expect(find_field("address_state").value).to eq("TX")
       expect(find_field("address_zip_code").value).to eq("76014")
+    end
+  end
+
+  scenario "failed at updating Billing Address" do
+    within("#billing-info") do
+      find('input[type="text"][name*="address[address_1]"]').set("1 Billing Address Way")
+      find('input[type="text"][name*="address[address_2]"]').set("Unit 2")
+      find('input[type="text"][name*="address[city]"]').set("Arlington")
+      find('input[type="text"][name*="address[state]"]').set("TX")
+      find('input[type="text"][name*="address[zip_code]"]').set("Hello World!")
+      click_button "Update Billing Address"
+    end
+
+    within(".alert-warning") do
+      expect(page).to have_content("Zip code is not a number. Zip code is too long (maximum is 9 characters)")
     end
   end
 

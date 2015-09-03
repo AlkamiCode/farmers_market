@@ -37,4 +37,17 @@ feature "a visitor can create an account" do
     expect(page).to_not have_content("Login")
     expect(page).to have_content("Logout")
   end
+
+  scenario "a vistor fills out and submits an invalid create account form" do
+    fill_in "First Name", with: ""
+    fill_in "Last Name", with: ""
+    fill_in "Email", with: ""
+    fill_in "Password", with: "password"
+    click_button "Create Account"
+
+    expect(current_path).to eq('/account')
+    within(".alert-warning") do
+      expect(page).to have_content("First name can't be blank. Last name can't be blank. Email can't be blank. Email is invalid")
+    end
+  end
 end

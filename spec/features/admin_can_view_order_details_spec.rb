@@ -28,6 +28,22 @@ feature "admin user" do
     expect(page).to have_content("$59.97")
   end
 
+  scenario "can change status of an  order" do
+    order = @user_one.orders.first
+    expect(current_path).to eq(admin_orders_path(@user_one.store))
+    expect(page).to have_content("#{order.id}")
+
+    expect(page).to have_content("Ordered")
+
+    expect(page).to have_content("$59.97")
+
+    click_link "Cancelled"
+
+    within(".order-status") do
+      expect(page).to have_content("Cancelled")
+    end
+  end
+
 
   scenario "can view individual orders" do
     order = @user_one.orders.first
@@ -40,4 +56,5 @@ feature "admin user" do
 
     expect(page).to have_content("$59.97")
   end
+
 end
