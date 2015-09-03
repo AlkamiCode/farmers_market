@@ -25,10 +25,10 @@ class ApplicationController < ActionController::Base
 
   def current_store
     if current_user.store
-    @current_store ||= Store.find_by(url: current_user.store.url)
-  else
-    @current_store = nil
-  end
+      @current_store ||= Store.find_by(url: current_user.store.url)
+    else
+      @current_store = nil
+    end
   end
 
   def authorize!
