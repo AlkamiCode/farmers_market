@@ -9,12 +9,13 @@ CarrierWave.configure do |config|
     config.storage = :fog
 
     config.fog_credentials = {
-      provider:                         'Google',
+      provider:                         'AWS',
+      region: 'us-west-2',
 
-      google_storage_access_key_id:     Figaro.env.google_storage_access_key_id,
-      google_storage_secret_access_key: Figaro.env.google_storage_secret_access_key
+      aws_access_key_id:     Figaro.env.aws_access_key_id,
+      aws_secret_access_key: Figaro.env.aws_secret_access_key
     }
-    config.fog_directory = 'farmer-pictures'
+    config.fog_directory = 'alkami-farmers-market'
   end
 
 

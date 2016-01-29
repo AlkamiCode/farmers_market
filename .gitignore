@@ -19,3 +19,7 @@
 
 coverage
 /config/secrets.yml
+
+# Ruby Mine Ignores
+.idea
+

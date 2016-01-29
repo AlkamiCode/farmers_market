@@ -10,7 +10,6 @@ gem "fog", "~> 1.27", require: "fog/rackspace/storage"
 gem 'carrierwave'
 gem "fog-google"
 gem 'rmagick'
-gem "figaro"
 gem 'faker'
 gem 'rails_12factor', group: :production
 gem 'will_paginate'
@@ -40,9 +39,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-gem 'puma'
+# gem 'puma'
 
-# Use Capistrano for deployment
+# Us Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
