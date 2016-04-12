@@ -28,7 +28,7 @@ class Seed
     name: "Baked Goods",
     description: "Baked goods just like your mom used to make!"
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.food, description: Faker::Products.description,
       price: Faker::Commerce.price.to_d + 1,
@@ -39,7 +39,7 @@ class Seed
       puts "create product number #{i}"
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -63,7 +63,7 @@ class Seed
     name: "Canned Goods",
     description: "All of your fresh food stored for later!"
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.canned_food, description: Faker::Products.canned_description,
       price: Faker::Commerce.price.to_d + 1,
@@ -73,7 +73,7 @@ class Seed
       product.save!
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -97,7 +97,7 @@ class Seed
     name: "Crafts",
     description: "Want a new DIY project? We've got you covered!"
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.crafts_supplies, description: Faker::Products.crafts_description,
       price: Faker::Commerce.price.to_d + 1,
@@ -107,7 +107,7 @@ class Seed
       product.save!
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -131,7 +131,7 @@ class Seed
     name: "Flowers",
     description: "Wife mad at you? We've got you covered!"
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.flowers_flower, description: Faker::Products.flowers_description,
       image_url: Faker::Products.flowers_image, price: Faker::Commerce.price.to_d + 1,
@@ -141,7 +141,7 @@ class Seed
       product.save!
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -165,7 +165,7 @@ class Seed
     name: "Fruit",
     description: "Fruit fresh from the orchard!"
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.fruits_fruit, description: Faker::Products.fruits_description,
       price: Faker::Commerce.price.to_d + 1,
@@ -175,7 +175,7 @@ class Seed
       product.save!
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -199,7 +199,7 @@ class Seed
     name: "Grains",
     description: "Perfect for making your home made bread."
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.grains_grain, description: Faker::Products.grains_description,
       price: Faker::Commerce.price.to_d + 1,
@@ -209,7 +209,7 @@ class Seed
       product.save!
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -233,7 +233,7 @@ class Seed
     name: "Herbs",
     description: "No, not that kind of herb."
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.herbs_herb, description: Faker::Products.herbs_description,
       price: Faker::Commerce.price.to_d + 1,
@@ -243,7 +243,7 @@ class Seed
       product.save!
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -267,7 +267,7 @@ class Seed
     name: "Seeds",
     description: "Perfect for that garden you've been wanting to grow!"
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.seeds_seed, description: Faker::Products.seeds_description,
       price: Faker::Commerce.price.to_d + 1,
@@ -277,7 +277,7 @@ class Seed
       product.save!
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -301,7 +301,7 @@ class Seed
     name: "Vegetables",
     description: "Fall is right around the corner, get some freshly harvested vegetables for your supper!"
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.vegetables_vegetable, description: Faker::Products.vegetables_description,
       price: Faker::Commerce.price.to_d + 1,
@@ -311,7 +311,7 @@ class Seed
       product.save!
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -335,7 +335,7 @@ class Seed
     name: "Drinks",
     description: "Delicious and refreshing."
     )
-    50.times do |i|
+    25.times do |i|
       product = Product.create!(
       name: Faker::Products.drinks_drink, description: Faker::Products.drinks_description,
       price: Faker::Commerce.price.to_d + 1,
@@ -345,7 +345,7 @@ class Seed
       product.save!
     end
     stores = []
-    10.times do |i|
+    5.times do |i|
       stores <<  Store.find(Random.new.rand(1..21))
     end
     stores.each do |store|
@@ -372,7 +372,7 @@ class Seed
     last_name: "Telez")
     registered.roles << Role.create(name: "registered_user")
     platform.roles << Role.create(name: "platform_admin")
-    100.times do |i|
+    10.times do |i|
       user = User.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
@@ -399,7 +399,7 @@ class Seed
   def generate_stores
     Role.create(name: "store_admin")
 
-    20.times do |i|
+    10.times do |i|
       user = User.create(email: "farmer#{i}@turing.io", password: "password", first_name: "Farmer#{i}",
       last_name: "Johnson")
       user.roles << Role.find_by(name: "store_admin")
